@@ -1,0 +1,25 @@
+<div class="container mt-5" style="max-width: 600px;">
+  <h1 class="text-center mb-4">タスク詳細</h1>
+
+  <div class="card p-4">
+    <p>
+      <strong>タスク名:</strong><br>
+      <%= @task.name %>
+    </p>
+
+    <p>
+      <strong>説明:</strong><br>
+      <%= @task.explanation %>
+    </p>
+
+    <p>
+      <strong>平均時間:</strong><br>
+      <%= @task.average_time || '未設定' %>
+    </p>
+  </div>
+
+  <div class="text-center mt-4">
+    <%= link_to '編集', edit_admin_task_path(@task), class: 'btn btn-secondary btn-lg me-3' %>
+    <%= link_to '一覧に戻る', admin_tasks_path, class: 'btn btn-primary btn-lg' %>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="container mt-5" style="max-width: 600px;">
+  <h1 class="text-center mb-4">新規タスク作成</h1>
+
+  <%= form_with model: @task, url: admin_tasks_path, local: true do |f| %>
+    <div class="form-group mb-3">
+      <%= f.label :name, 'タスク名', class: 'form-label' %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+
+    <div class="form-group mb-3">
+      <%= f.label :explanation, 'タスクの説明', class: 'form-label' %>
+      <%= f.text_area :explanation, class: 'form-control', rows: 4 %>
+    </div>
+
+    <div class="text-center">
+      <%= f.submit '作成', class: 'btn btn-primary btn-lg' %>
+    </div>
+  <% end %>
+</div>
