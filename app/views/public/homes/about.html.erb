@@ -1,0 +1,15 @@
+<div class="container my-5" style="background-image: url('<%= asset_path('schedule.jpg') %>'); background-size: cover; background-position: center; height: 100vh;">
+  <div class="welcome-section d-flex justify-content-center align-items-center h-100 text-center" style="background-color: rgba(0, 0, 0, 0.5);">
+    <div class="welcome-text-center text-white">
+      <h1 class="display-4" style="color: #f5f5f5;">WELCOME TO CodeSchedule!!</h1>
+      <p class="lead" style="color: #f5f5f5;">このアプリは、プログラミング初心者や駆け出しのエンジニアが</p>
+      <p class="lead" style="color: #f5f5f5;">スケジュールを立てるためのアプリです。</p>
+      <p class="lead" style="color: #f5f5f5;">このアプリを使い計画的に実装を進めていきましょう！！</p>
+      
+      <!-- ゲストログインボタン -->
+      <div class="mt-4">
+        <%= link_to "ゲストの方はこちらから", users_guest_sign_in_path, class: 'btn btn-secondary btn-lg' %>
+      </div>
+    </div>
+  </div>
+</div>

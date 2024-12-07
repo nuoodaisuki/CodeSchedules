@@ -1,0 +1,40 @@
+/* プロフィール画像のスタイル */
+.img-fluid {
+  border: 2px solid #ddd;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+/* ユーザー情報のセクション */
+.text-center {
+  text-align: center;
+}
+
+.mt-3 {
+  margin-top: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.hr {
+  margin: 1rem 0;
+  border: 0;
+  border-top: 2px solid #ccc;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+}
+
+.btn-sm {
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+}
+
+.highlight {
+  background-color: #ffcccc; /* 薄い赤色 */
+  color: #000; /* 文字色（必要なら変更） */
+}
