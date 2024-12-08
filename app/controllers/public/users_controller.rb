@@ -1,4 +1,5 @@
 class Public::UsersController < ApplicationController
+  
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit]
 
@@ -24,6 +25,7 @@ class Public::UsersController < ApplicationController
       bypass_sign_in(@user)
       redirect_to user_path(@user), notice: "ユーザー情報を更新しました"
     else
+      flash.now[:alert] = "必要な情報を入力して下さい。"
       render :edit, status: :unprocessable_entity
     end
   end

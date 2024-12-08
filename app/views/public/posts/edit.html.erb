@@ -18,9 +18,10 @@
 
     <!-- チェックボックス -->
     <div class="form-check mb-4" style="display: flex; align-items: center;">
-      <%= f.check_box :is_completion, { class: 'form-check-input', style: "transform: scale(1.5); margin-right: 10px;" }, true, false %>
+      <%= f.check_box :is_completion, { class: 'form-check-input', style: "transform: scale(1.5); margin-right: 10px;", required: true }, true, false %>
       <%= f.label :is_completion, 'タスク完了', class: 'form-check-label' %>
     </div>
+
 
     <!-- 更新ボタン -->
     <div class="mb-3">

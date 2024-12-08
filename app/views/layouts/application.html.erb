@@ -12,6 +12,11 @@
 
   <body>
     <%= render 'layouts/header' %>
+    <% flash.each do |key, message| %>
+      <div class="alert <%= key == "notice" ? "alert-success" : "alert-danger" %>">
+        <%= message %>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

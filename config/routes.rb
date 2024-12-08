@@ -24,7 +24,9 @@ root to: "public/homes#about" # アプリ起動時に about ページを表示
     resources :posts, only: [:new, :create, :edit, :update, :destroy, :index, :show]
     resources :tasks, only: [:index, :show]
     get "users/information/:id" => "users#show", as: 'user'
-    resources :users, only: [:edit, :update, :destroy]
+    patch "users/:id" => "users#update", as: 'change'
+    delete "users/:id" => "users#destroy", as: 'withdraw'
+    resources :users, only: [:edit]
     
   end
 

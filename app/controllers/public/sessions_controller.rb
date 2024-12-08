@@ -25,10 +25,26 @@ class Public::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 
+  def create
+    self.resource = warden.authenticate(auth_options)
+
+    # 認証失敗時のカスタマイズ
+    if resource.nil?
+      if params[:user][:email].present? && params[:user][:password].present?
+        flash[:alert] = "wrong email or password"
+      else
+        flash[:alert] = "Invalid Email or password"
+      end
+      redirect_to new_user_session_path and return
+    end
+
+    super # 認証成功時は通常の挙動
+  end
+
   def guest_sign_in
     user = User.guest
     sign_in user
-    redirect_to posts_path, notice: "guestuserでログインしました。"
+    redirect_to posts_path, notice: "Guest-Signed in successfully."
   end
 
   protected

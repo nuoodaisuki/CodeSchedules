@@ -38,7 +38,7 @@
           <% @posts.each do |post| %>
             <tr>
               <!-- 実装した機能 (タスク名) -->
-              <td class="<%= post.is_completion ? '' : 'highlight' %>">
+              <td class="<%= post.is_completion ? 'green' : '' %>">
                 <% if post.is_completion == false %>
                   <%= link_to post.task.name + "(実装中)", post_path(post), class: "text-decoration-none text-primary" %>
                 <% else %>
@@ -47,7 +47,7 @@
               </td>
               
               <!-- かかった時間 -->
-              <td class="<%= post.is_completion ? '' : 'highlight' %>">
+              <td class="<%= post.is_completion ? 'green' : '' %>">
                 <% if post.time_taken.nil? %>
                   実装完了後入力
                 <% else %>
@@ -57,7 +57,7 @@
               
               <% if @user == current_user %>
                 <!-- 編集ボタン -->
-                <td class="text-center <%= post.is_completion ? '' : 'highlight' %>">
+                <td class="text-center <%= post.is_completion ? 'green' : '' %>">
                   <% if post.is_completion == false %>
                     <%= link_to "実装完了！", edit_post_path(post), class: "btn btn-warning", style: "width: 150px; margin-right: 5px;" %>
                   <% else %>
@@ -65,7 +65,7 @@
                   <% end %>
                 </td>
                 <!-- 削除ボタン -->
-                <td class="text-center <%= post.is_completion ? '' : 'highlight' %>">
+                <td class="text-center <%= post.is_completion ? 'green' : '' %>">
                   <%= link_to "削除", post_path(post), method: :delete, class: "btn btn-danger", style: "width: 150px;" , data: { confirm: "本当に削除しますか？" } %>
                 </td>
               <% end %>

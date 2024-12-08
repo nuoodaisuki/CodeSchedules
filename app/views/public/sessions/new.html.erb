@@ -1,4 +1,10 @@
 <div class="container mt-5" style="max-width: 400px;">
+  <% if flash[:alert].present? %>
+    <div class="alert alert-danger">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+
   <h2 class="text-center mb-4">ログイン画面</h2>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
