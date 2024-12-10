@@ -51,7 +51,7 @@ class Public::SessionsController < Devise::SessionsController
 
   # ログイン後のリダイレクト先
   def after_sign_in_path_for(resource)
-    posts_path # 投稿一覧ページ
+    user_path(current_user) # 投稿一覧ページ
   end
 
   # ログアウト後のリダイレクト先
