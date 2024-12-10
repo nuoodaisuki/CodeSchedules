@@ -30,7 +30,7 @@
             </td>
             
             <!-- タスクの名前 -->
-            <td><%= post.task.name %></td>
+            <td><%= link_to post.task.name, post_path(post), class: "text-decoration-none text-primary" %></td>
             
             <!-- 所要時間 -->
             <td><%= post.time_taken %> 分</td>
