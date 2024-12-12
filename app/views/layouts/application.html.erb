@@ -11,7 +11,6 @@
   </head>
 
   <body>
-    <p>lorem ipsum</p>  <!-- この行を追加 -->
     <%= render 'layouts/header' %>
     <% flash.each do |key, message| %>
       <div class="alert <%= key == "notice" ? "alert-success" : "alert-danger" %>">
