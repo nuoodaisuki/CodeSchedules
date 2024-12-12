@@ -44,7 +44,7 @@ class Public::SessionsController < Devise::SessionsController
   def guest_sign_in
     user = User.guest
     sign_in user
-    redirect_to posts_path, notice: "Guest-Signed in successfully."
+    redirect_to user_path(current_user), notice: "Guest-Signed in successfully."
   end
 
   protected
