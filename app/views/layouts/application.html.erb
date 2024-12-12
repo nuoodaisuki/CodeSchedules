@@ -12,7 +12,6 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <p>確認用</p>
     <% flash.each do |key, message| %>
       <div class="alert <%= key == "notice" ? "alert-success" : "alert-danger" %>">
         <%= message %>
