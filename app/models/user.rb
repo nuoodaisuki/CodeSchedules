@@ -14,6 +14,10 @@ class User < ApplicationRecord
     "#{last_name} #{first_name}"
   end
 
+  def self.looks(word)
+    where("introduction LIKE ?", "%#{word}%")
+  end
+
   GUEST_USER_EMAIL = "guest@example.com"
 
   def self.guest
