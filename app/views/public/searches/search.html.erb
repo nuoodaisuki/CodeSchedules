@@ -41,7 +41,7 @@
             <tr>
               <td><%= link_to post.user.name, user_path(post.user) %></td>
               <td><%= link_to post.task.name, post_path(post) %></td>
-              <td><%= post.time_taken %></td>
+              <td><%= post.time_taken %>分</td>
             </tr>
           <% end %>
         <% end %>
