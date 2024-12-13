@@ -44,7 +44,7 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:last_name, :first_name, :email, :image).tap do |user_params|
+    params.require(:user).permit(:last_name, :first_name, :email, :image, :introduction).tap do |user_params|
       if params[:user][:encrypted_password].present?
         user_params[:encrypted_password] = params[:user][:encrypted_password]
       end

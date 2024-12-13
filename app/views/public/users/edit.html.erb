@@ -11,17 +11,22 @@
 
     <div class="form-group">
       <%= f.label :last_name, "苗字" %>
-      <%= f.text_field :last_name, class: "form-control", value: @user.last_name %>
+      <%= f.text_field :last_name, class: "form-control" %>
     </div>
 
     <div class="form-group">
       <%= f.label :first_name, "名前" %>
-      <%= f.text_field :first_name, class: "form-control", value: @user.first_name %>
+      <%= f.text_field :first_name, class: "form-control" %>
     </div>
 
     <div class="form-group">
       <%= f.label :email, "メールアドレス" %>
-      <%= f.email_field :email, class: "form-control", value: @user.email %>
+      <%= f.email_field :email, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :introduction, "自己紹介" %>
+      <%= f.text_area :introduction, class: "form-control", placeholder: "自己紹介を入力してください" %>
     </div>
 
     <!-- ボタン -->
