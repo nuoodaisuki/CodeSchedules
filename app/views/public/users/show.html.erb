@@ -16,6 +16,7 @@
           <tr>
             <th>実装した機能</th>
             <th>かかった時間</th>
+            <th>コメント数</th>
             <% if @user == current_user %>
               <th></th> <!-- 編集ボタンのための空の列 -->
               <th></th> <!-- 削除ボタンのための空の列 -->
@@ -41,6 +42,11 @@
                 <% else %>
                   <%= post.time_taken %> 分
                 <% end %>
+              </td>
+
+              <!-- コメント数 -->
+              <td class="<%= post.is_completion ? 'green' : '' %>">
+                <%= "#{post.comments.count} コメント" %>
               </td>
               
               <% if @user == current_user %>

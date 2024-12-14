@@ -7,7 +7,7 @@ class Public::SearchesController < ApplicationController
     @word = params[:word]     # 検索キーワード
 
     if @word.blank? 
-      redirect_to posts_path
+      redirect_to posts_path, alert: "文字を入力して下さい。"
     else
       if range == "自己紹介文"
         @users = User.looks(params[:word])

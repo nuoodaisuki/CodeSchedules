@@ -15,21 +15,23 @@
           <th>ユーザー名</th>
           <th>実装した機能</th>
           <th>かかった時間</th>
+          <th>コメント数</th>
         </tr>
       </thead>
       <tbody>
         <% @posts.each do |post| %>
           <tr>
             <!-- ユーザー名 -->
-            <td>
-              <%= link_to post.user.name, user_path(post.user), class: "text-decoration-none text-primary" %>
-            </td>
+            <td><%= link_to post.user.name, user_path(post.user), class: "text-decoration-none text-primary" %></td>
             
             <!-- タスクの名前 -->
             <td><%= link_to post.task.name, post_path(post), class: "text-decoration-none text-primary" %></td>
             
             <!-- 所要時間 -->
             <td><%= post.time_taken %> 分</td>
+
+            <!-- コメント数 -->
+            <td><%= "#{post.comments.count} コメント" %></td>
           </tr>
         <% end %>
       </tbody>

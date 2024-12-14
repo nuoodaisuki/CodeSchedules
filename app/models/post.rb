@@ -5,6 +5,7 @@ class Post < ApplicationRecord
 
   belongs_to :user
   belongs_to :task
+  has_many :comments, dependent: :destroy
 
   def self.looks(word)
     joins(:task).where("tasks.name LIKE ?", "%#{word}%")

@@ -21,7 +21,9 @@ root to: "public/homes#about" # アプリ起動時に about ページを表示
   end
 
   scope module: :public do
-    resources :posts, only: [:new, :create, :edit, :update, :destroy, :index, :show]
+    resources :posts, only: [:new, :create, :edit, :update, :destroy, :index, :show] do
+      resources :comments, only: [:create, :edit, :update, :destroy]
+    end
     resources :tasks, only: [:index, :show]
     get "search" => "searches#search"
     get "users/information/:id" => "users#show", as: 'user'
