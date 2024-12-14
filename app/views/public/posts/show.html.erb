@@ -1,6 +1,6 @@
 <div class="row">
 
-  <%= render "public/shared/user_info", user: @post.user, link_to_user: true, editable: false %>
+  <%= render "public/shared/user_info", path: user_path(@post.user), user: @post.user, link_to_user: true, editable: false %>
 
   <!-- 投稿詳細 -->
   <div class="col-9">

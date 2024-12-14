@@ -18,6 +18,10 @@ root to: "public/homes#about" # アプリ起動時に about ページを表示
 
   namespace :admin do
     resources :tasks, only: [:index, :new, :create, :show, :edit, :update]
+    resources :users, only: [:index, :show, :destroy]
+    resources :posts, only: [:show, :destroy] do
+      resources :comments, only: [:destroy]
+    end
   end
 
   scope module: :public do
