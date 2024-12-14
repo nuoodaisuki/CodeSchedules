@@ -38,3 +38,10 @@
   background-color: #00FF99;
   color: #000;
 }
+
+/* ボタンコンテナを右下に固定 */
+.delete-btn-container {
+  position: absolute;
+  right: 130px; /* 右端からの余白 */
+  bottom: 20px; /* 下端からの余白 */
+}
