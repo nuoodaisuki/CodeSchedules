@@ -14,6 +14,7 @@ class Public::PostsController < ApplicationController
     if @post.is_completion == false && @post.user != current_user
       redirect_to posts_path, alert: "他のユーザーの未了投稿は閲覧できません。"
     end
+    @comment = Comment.new
   end
 
   def new
