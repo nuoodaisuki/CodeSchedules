@@ -34,7 +34,13 @@ root to: "public/homes#about" # アプリ起動時に about ページを表示
     patch "users/:id" => "users#update", as: 'change'
     delete "users/:id" => "users#destroy", as: 'withdraw'
     resources :users, only: [:edit]
-    
+    resources :groups, only: [:new, :index, :show, :create, :edit, :update] do
+      resource :group_users, only: [:create, :destroy]
+      member do
+        get :pending_users # 承認待ち画面
+      end
+      resources :group_users, only: [:update]
+    end
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
