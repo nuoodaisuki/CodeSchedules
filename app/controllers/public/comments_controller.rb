@@ -1,5 +1,6 @@
 class Public::CommentsController < ApplicationController
 
+  before_action :authenticate_user!
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :ensure_guest_user
 

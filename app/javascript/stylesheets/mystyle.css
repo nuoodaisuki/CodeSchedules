@@ -45,3 +45,81 @@
   right: 130px; /* 右端からの余白 */
   bottom: 20px; /* 下端からの余白 */
 }
+
+/* 全体のスタイル */
+.group-title {
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.message-form {
+  margin-bottom: 20px;
+}
+
+.message-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* メッセージの枠外情報 */
+.message-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  max-width: 80%;
+}
+
+.my-message-wrapper {
+  margin-left: auto;
+  text-align: right;
+}
+
+.other-message-wrapper {
+  margin-right: auto;
+  text-align: left;
+}
+
+/* メッセージボックス */
+.message-box {
+  padding: 10px;
+  border-radius: 10px;
+  word-wrap: break-word;
+}
+
+.my-message {
+  background-color: #dcf8c6; /* LINE風の緑色 */
+}
+
+.other-message {
+  background-color: #f1f0f0; /* グレー背景 */
+}
+
+/* メッセージ内容 */
+.message-text {
+  margin: 0;
+  font-size: 1em;
+}
+
+/* ユーザー名と時間 */
+.message-meta {
+  font-size: 0.8em;
+  color: #555;
+}
+
+/* 自分のメッセージ用の編集・削除リンク */
+.message-actions {
+  font-size: 0.8em;
+}
+
+.edit-link, .delete-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.edit-link:hover, .delete-link:hover {
+  text-decoration: underline;
+}

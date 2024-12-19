@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :group_users, dependent: :destroy
+  has_many :group_messages, dependent: :destroy
+  has_many :groups, through: :group_users
 
   def name
     "#{last_name} #{first_name}"

@@ -22,6 +22,9 @@ root to: "public/homes#about" # アプリ起動時に about ページを表示
     resources :posts, only: [:show, :destroy] do
       resources :comments, only: [:destroy]
     end
+    resources :groups, only: [:index, :destroy] do
+      resources :group_messages, only: [:index, :destroy]
+    end
   end
 
   scope module: :public do
@@ -35,6 +38,7 @@ root to: "public/homes#about" # アプリ起動時に about ページを表示
     delete "users/:id" => "users#destroy", as: 'withdraw'
     resources :users, only: [:edit]
     resources :groups, only: [:new, :index, :show, :create, :edit, :update] do
+      resources :group_messages, only: [:create, :index, :edit, :update, :destroy]
       resource :group_users, only: [:create, :destroy]
       member do
         get :pending_users # 承認待ち画面

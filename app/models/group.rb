@@ -4,6 +4,7 @@ class Group < ApplicationRecord
   belongs_to :owner, class_name: "User"
   has_many :users, through: :group_users, source: :user
   has_many :approved_users, -> { where(group_users: { is_participation: true }) }, through: :group_users, source: :user
+  has_many :group_messages, dependent: :destroy
 
   validates :name, presence: true
   has_one_attached :group_image

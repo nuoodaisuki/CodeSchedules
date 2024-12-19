@@ -10,7 +10,7 @@
           <th></th>
           <th>グループ名</th>
           <th>メンバー</th>
-          <th colspan="2"></th>
+          <th colspan="3"></th>
         </tr>
       </thead>
       <tbody>
@@ -23,6 +23,9 @@
             <% end %>          
           </td>
           <% if @group.is_owned_by?(current_user) %>
+            <% if @group.group_users.where(is_participation: true).exists? %>
+              <td><%= link_to "チャットルームへ", group_group_messages_path(@group), class: "btn btn-info" %></td>
+            <% end %>
             <td><%= link_to "Edit", edit_group_path(@group), class: "btn btn-success" %></td>
             <% if @group.group_users.where(is_participation: false).exists? %>
               <td><%= link_to "参加申請の承認画面へ", pending_users_group_path(@group), class: "btn btn-primary" %></td>
@@ -31,6 +34,7 @@
             <% if @group.include_user?(current_user) %>
               <% group_user = @group.group_users.find_by(user_id: current_user.id) %>
               <% if group_user.approved? %>
+                <td><%= link_to "チャットルームへ", group_group_messages_path(@group), class: "btn btn-info" %></td>
                 <td><%= link_to "このグループから脱退する", group_group_users_path(@group, user_id: current_user.id), method: :delete, class: "btn btn-danger", data: { confirm: "本当にこのグループから脱退しますか？" } %></td>
               <% else %>
                 <p>参加申請中です。</p>
