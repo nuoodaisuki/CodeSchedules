@@ -48,6 +48,32 @@
       </tbody>
     </table>
   </div>
+  <% elsif @groups.present? %>
+  <div class="table-responsive" style="width: 80%; margin: 0 auto;">
+    <h2 class="mb-3">「<%= @word %>」が所属しているグループ</h2>
+    <table class="table table-bordered table-hover text-center">
+      <thead>
+        <tr>
+          <th>グループ名</th>
+          <th>作成者</th>
+          <th>メンバーの名前</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @groups.each do |group| %>
+          <tr>
+            <td><%= link_to group.name, group_path(group) %></td>
+            <td><%= group.owner.name %></td>
+            <td>
+              <% group.approved_users.each do |member| %>
+                <%= member.name %><br>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 <% else %>
   <h2 style="text-align:center">該当する結果がありません。</h2>
 <% end %>

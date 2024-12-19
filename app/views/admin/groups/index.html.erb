@@ -1,0 +1,23 @@
+<div style="max-width: 90%; margin: 0 auto;">
+  <table class="table">
+  <h3 class="mt-3 mb-3">グループ一覧</h3>
+    <thead>
+      <tr>
+        <th></th>
+        <th>グループ名</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @groups.each do |group| %>
+        <tr>
+          <td><%= image_tag(group.group_image.attached? ? group.group_image : "no_image.jpg", size: "50x50") %></td>
+          <td><%= group.name %></td>
+          <td><%= link_to "チャットルーム", admin_group_group_messages_path(group), class: "btn btn-primary btn-sm" %></td>
+          <td><%= link_to "削除", admin_group_path(group), method: :delete, data: { confirm: "本当にこのグループを削除しますか？" }, class: "btn btn-danger btn-sm" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

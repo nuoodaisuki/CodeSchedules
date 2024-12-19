@@ -1,0 +1,54 @@
+<div class="row">
+
+  <%= render "public/shared/user_info", path: user_path(@group.owner), user: @group.owner, link_to_user: true, editable: false %>
+
+  <div class="col-md-9">
+    <h3 class="mt-3 mb-3">グループ紹介画面</h3>
+    <table class="table" style="max-width: 90%;">
+      <thead>
+        <tr>
+          <th></th>
+          <th>グループ名</th>
+          <th>メンバー</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= image_tag(@group.group_image.attached? ? @group.group_image : "no_image.jpg", size: "50x50") %></td>
+          <td><%= @group.name %></td>
+          <td>
+            <% @group.group_users.where(is_participation: true).each do |group_user| %>
+              <%= link_to group_user.user.name, user_path(group_user.user) %><br>
+            <% end %>          
+          </td>
+          <% if @group.is_owned_by?(current_user) %>
+            <% if @group.group_users.where(is_participation: true).exists? %>
+              <td><%= link_to "チャットルームへ", group_group_messages_path(@group), class: "btn btn-info" %></td>
+            <% end %>
+            <td><%= link_to "Edit", edit_group_path(@group), class: "btn btn-success" %></td>
+            <% if @group.group_users.where(is_participation: false).exists? %>
+              <td><%= link_to "参加申請の承認画面へ", pending_users_group_path(@group), class: "btn btn-primary" %></td>
+            <% end %>
+          <% else %>
+            <% if @group.include_user?(current_user) %>
+              <% group_user = @group.group_users.find_by(user_id: current_user.id) %>
+              <% if group_user.approved? %>
+                <td><%= link_to "チャットルームへ", group_group_messages_path(@group), class: "btn btn-info" %></td>
+                <td><%= link_to "このグループから脱退する", group_group_users_path(@group, user_id: current_user.id), method: :delete, class: "btn btn-danger", data: { confirm: "本当にこのグループから脱退しますか？" } %></td>
+              <% else %>
+                <p>参加申請中です。</p>
+              <% end %>
+            <% else %>
+              <td><%= link_to "このグループに参加申請を送る", group_group_users_path(@group), method: :post, class: "btn btn-success" %></td>
+            <% end %>
+          <% end %>
+        </tr>
+      </tbody>
+    </table>
+    <h3 class="mt-3">グループ紹介文</h3>
+    <div class="p-3 mb-3 border" style="max-width: 95%; height: 350px; border-radius: 5px;">
+      <p><%= @group.explanation %></p>
+    </div>
+  </div>
+</div>

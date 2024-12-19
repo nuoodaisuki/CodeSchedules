@@ -1,0 +1,27 @@
+<div style="max-width: 90%; margin: 0 auto;">
+  <h2 class="mt-3">参加申請一覧</h2>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>申請者</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @pending_users.each do |pending_user| %>
+        <tr>
+          <td>
+            <%= link_to "#{pending_user.user.name} さん", user_path(pending_user.user) %>
+          </td>
+          <td>
+            <%= button_to "承認する", group_group_user_path(@group, pending_user), method: :patch, class: "btn btn-success btn-sm" %>
+          </td>
+          <td>
+            <%= button_to "拒否する", group_group_users_path(group_id: @group.id, user_id: pending_user.user.id), method: :delete, class: "btn btn-danger btn-sm" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
