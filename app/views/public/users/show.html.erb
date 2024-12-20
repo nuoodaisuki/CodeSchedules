@@ -1,6 +1,6 @@
 <div class="row">
 
-  <%= render "public/shared/user_info", user: @user, link_to_user: false, editable: (@user == current_user && @user.email != "guest@example.com") %>
+  <%= render "public/shared/user_info", user: @user, link_to_user: false, editable: (@user == current_user && @user.email != "guest@example.com"), title: 'User info' %>
 
   <!-- 投稿一覧 -->
   <div class="col-md-9">
@@ -11,61 +11,87 @@
         <%= @user.name %>さんの実装した機能一覧
       <% end %>
     </h3>
-      <table class="table table-bordered table-hover" style="max-width: 90%;">
-        <thead class="thead-light">
+    <div class="d-flex justify-content-between align-items-center mt-3" style="max-width: 90%;">
+      <h5>
+        <% if @user == current_user %>
+          <%= link_to "お気に入り記事一覧へ", favorite_posts_path(current_user) %>
+        <% else %>
+          <%= link_to "お気に入り記事一覧へ", favorite_posts_path(@user) %>
+        <% end %>
+      </h5>
+      <%= form_with url: request.path, method: :get, local: true, class: "d-flex align-items-center" do |f| %>
+        <div class="form-group mb-0 mr-2">
+          <!-- 並べ替えラベルとセレクト -->
+          <%= f.label :sort, "並び替え", class: "form-label me-2" %>
+          <%= f.select :sort, options_for_select([["新しい順"], ["いいね数順"], ["コメント数順"]], params[:sort]), class: "form-select" %>
+        </div>
+        <!-- 並べ替えボタン -->
+        <div class="mb-2">
+          <%= f.submit "並べ替える", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+    <table class="table table-bordered table-hover" style="max-width: 90%;">
+      <thead class="thead-light">
+        <tr>
+          <th>実装した機能</th>
+          <th>かかった時間</th>
+          <th>いいね数</th>
+          <th>コメント数</th>
+          <% if @user == current_user %>
+            <th></th> <!-- 編集ボタンのための空の列 -->
+            <th></th> <!-- 削除ボタンのための空の列 -->
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% @posts.each do |post| %>
           <tr>
-            <th>実装した機能</th>
-            <th>かかった時間</th>
-            <th>コメント数</th>
+            <!-- 実装した機能 (タスク名) -->
+            <td class="<%= post.is_completion ? 'green' : '' %>">
+              <% if post.is_completion == false %>
+                <%= link_to post.task.name + "(実装中)", post_path(post), class: "text-decoration-none text-primary" %>
+              <% else %>
+                <%= link_to post.task.name, post_path(post), class: "text-decoration-none text-primary" %>
+              <% end %>
+            </td>
+            
+            <!-- かかった時間 -->
+            <td class="<%= post.is_completion ? 'green' : '' %>">
+              <% if post.time_taken.nil? %>
+                実装完了後入力
+              <% else %>
+                <%= post.time_taken %> 分
+              <% end %>
+            </td>
+
+            <!-- いいね数 -->
+            <td class="<%= post.is_completion ? 'green' : '' %>">
+              <%= "#{post.favorites.count} いいね" %>
+            </td>
+
+            <!-- コメント数 -->
+            <td class="<%= post.is_completion ? 'green' : '' %>">
+              <%= "#{post.comments.count} コメント" %>
+            </td>
+            
             <% if @user == current_user %>
-              <th></th> <!-- 編集ボタンのための空の列 -->
-              <th></th> <!-- 削除ボタンのための空の列 -->
+              <!-- 編集ボタン -->
+              <td class="text-center <%= post.is_completion ? 'green' : '' %>">
+                <% if post.is_completion == false %>
+                  <%= link_to "実装完了！", edit_post_path(post), class: "btn btn-warning", style: "width: 150px; margin-right: 5px;" %>
+                <% else %>
+                  <%= link_to "メモの変更", edit_post_path(post), class: "btn btn-warning", style: "width: 150px; margin-right: 5px;" %>
+                <% end %>
+              </td>
+              <!-- 削除ボタン -->
+              <td class="text-center <%= post.is_completion ? 'green' : '' %>">
+                <%= link_to "削除", post_path(post), method: :delete, class: "btn btn-danger", style: "width: 150px;" , data: { confirm: "本当に削除しますか？" } %>
+              </td>
             <% end %>
           </tr>
-        </thead>
-        <tbody>
-          <% @posts.each do |post| %>
-            <tr>
-              <!-- 実装した機能 (タスク名) -->
-              <td class="<%= post.is_completion ? 'green' : '' %>">
-                <% if post.is_completion == false %>
-                  <%= link_to post.task.name + "(実装中)", post_path(post), class: "text-decoration-none text-primary" %>
-                <% else %>
-                  <%= link_to post.task.name, post_path(post), class: "text-decoration-none text-primary" %>
-                <% end %>
-              </td>
-              
-              <!-- かかった時間 -->
-              <td class="<%= post.is_completion ? 'green' : '' %>">
-                <% if post.time_taken.nil? %>
-                  実装完了後入力
-                <% else %>
-                  <%= post.time_taken %> 分
-                <% end %>
-              </td>
-
-              <!-- コメント数 -->
-              <td class="<%= post.is_completion ? 'green' : '' %>">
-                <%= "#{post.comments.count} コメント" %>
-              </td>
-              
-              <% if @user == current_user %>
-                <!-- 編集ボタン -->
-                <td class="text-center <%= post.is_completion ? 'green' : '' %>">
-                  <% if post.is_completion == false %>
-                    <%= link_to "実装完了！", edit_post_path(post), class: "btn btn-warning", style: "width: 150px; margin-right: 5px;" %>
-                  <% else %>
-                    <%= link_to "メモの変更", edit_post_path(post), class: "btn btn-warning", style: "width: 150px; margin-right: 5px;" %>
-                  <% end %>
-                </td>
-                <!-- 削除ボタン -->
-                <td class="text-center <%= post.is_completion ? 'green' : '' %>">
-                  <%= link_to "削除", post_path(post), method: :delete, class: "btn btn-danger", style: "width: 150px;" , data: { confirm: "本当に削除しますか？" } %>
-                </td>
-              <% end %>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>

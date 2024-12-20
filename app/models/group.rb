@@ -22,11 +22,11 @@ class Group < ApplicationRecord
   end
 
   def self.search_by_owner_name(word)
-    joins(:owner).where("users.last_name LIKE ? OR users.first_name LIKE ?", "%#{word}%", "%#{word}%")
+    joins(:owner).where("users.name LIKE ?", "%#{word}%")
   end
 
   def self.search_by_member_name(word)
-    joins(:users).where("users.last_name LIKE ? OR users.first_name LIKE ?", "%#{word}%", "%#{word}%").distinct
+    joins(:users).where("users.name LIKE ?", "%#{word}%").distinct
   end
 
 end

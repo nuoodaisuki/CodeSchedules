@@ -1,11 +1,11 @@
 <div class="row">
 
-  <%= render "public/shared/user_info", path: user_path(@post.user), user: @post.user, link_to_user: true, editable: false %>
+  <%= render "public/shared/user_info", path: user_path(@post.user), user: @post.user, link_to_user: true, editable: false, title: '投稿者' %>
 
   <!-- 投稿詳細 -->
   <div class="col-9">
   <h3 class="mt-3">実装した機能のメモ書き</h3>
-    <table class="table" style="max-width: 30%;">
+    <table class="table" style="max-width: 40%;">
         <tr>
           <td>実装した機能</td>
           <td>
@@ -13,6 +13,9 @@
           <% if @post.is_completion == false %>
             (実装中)
           <% end %>
+          </td>
+          <td id="favorite_btn_<%= @post.id %>">
+            <%= render "public/shared/favorite_btn", post: @post %>
           </td>
         </tr>
     </table>

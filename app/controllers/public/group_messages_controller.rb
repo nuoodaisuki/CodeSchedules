@@ -15,31 +15,8 @@ class Public::GroupMessagesController < ApplicationController
     @group = Group.find(params[:group_id])
     @group_message = @group.group_messages.new(group_message_params)
     @group_message.user = current_user
-    if @group_message.save
-      redirect_to group_group_messages_path(@group), notice: 'メッセージを送信しました。'
-    else
-      @group_messages = @group.group_messages.includes(:user).order(:created_at)
-      flash.now[:alert] = "メッセージを入力して下さい。"
-      render :index
-    end
-  end
-
-  # メッセージ編集画面表示
-  def edit
-    @group = Group.find(params[:group_id])
-    @group_message = @group.group_messages.find(params[:id])
-  end
-
-  # メッセージ更新
-  def update
-    @group = Group.find(params[:group_id])
-    @group_message = @group.group_messages.find(params[:id])
-    if @group_message.update(group_message_params)
-      redirect_to group_group_messages_path(@group), notice: 'メッセージが更新されました。'
-    else
-      flash.now[:alert] = "メッセージを入力して下さい。"
-      render :edit
-    end
+    @group_message.save
+    @group_messages = @group.group_messages.includes(:user).order(:created_at)
   end
 
   # メッセージ削除
@@ -47,7 +24,7 @@ class Public::GroupMessagesController < ApplicationController
     @group = Group.find(params[:group_id])
     @group_message = @group.group_messages.find(params[:id])
     @group_message.destroy
-    redirect_to group_group_messages_path(@group), notice: 'メッセージが削除されました。'
+    @group_messages = @group.group_messages.includes(:user).order(:created_at)
   end
 
   private

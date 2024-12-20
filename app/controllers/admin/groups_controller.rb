@@ -1,5 +1,7 @@
 class Admin::GroupsController < ApplicationController
 
+  before_action :authenticate_admin!
+
   # グループ一覧表示
   def index
     @groups = Group.all

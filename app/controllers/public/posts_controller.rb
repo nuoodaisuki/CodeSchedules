@@ -4,7 +4,15 @@ class Public::PostsController < ApplicationController
   before_action :check_own_post, only: [:show]  # 自分の未了投稿のみ閲覧可能
 
   def index
-    @posts = Post.where(is_completion: true).includes(:task).order(created_at: :desc)
+    @posts = Post.where(is_completion: true).includes(:task)
+    case params[:sort]
+    when "いいね数順"
+      @posts = @posts.left_joins(:favorites).group(:id).order('COUNT(favorites.id) DESC')
+    when "コメント数順"
+      @posts = @posts.left_joins(:comments).group(:id).order('COUNT(comments.id) DESC')
+    else
+      @posts = @posts.order(created_at: :desc) # 新しい順
+    end
   end
   
 

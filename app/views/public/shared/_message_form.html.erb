@@ -1,0 +1,11 @@
+<div class="message-form mx-auto" style="max-width: 80%;" >
+  <%= form_with model: [group, group_message], local: false do |f| %>
+    <div>
+      <%= f.label :content, "メッセージ" %><br>
+      <%= f.text_area :content, rows: 3, id: "comment_textarea", class: "form-control", placeholder: "メッセージを入力..." %>
+    </div>
+    <div class="mt-2">
+      <%= f.submit "送信", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

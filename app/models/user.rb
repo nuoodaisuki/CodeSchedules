@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  validates :last_name, :first_name, presence: true
+  validates :name, presence: true
 
   has_one_attached :image
   has_many :posts, dependent: :destroy
@@ -12,22 +12,15 @@ class User < ApplicationRecord
   has_many :group_users, dependent: :destroy
   has_many :group_messages, dependent: :destroy
   has_many :groups, through: :group_users
-
-  def name
-    "#{last_name} #{first_name}"
-  end
-
-  def self.looks(word)
-    where("introduction LIKE ?", "%#{word}%")
-  end
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_posts, through: :favorites, source: :post
 
   GUEST_USER_EMAIL = "guest@example.com"
 
   def self.guest
     find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
       user.password = SecureRandom.urlsafe_base64
-      user.last_name = "guest"
-      user.first_name = "user"
+      user.name = "guestuser"
     end
   end
   
