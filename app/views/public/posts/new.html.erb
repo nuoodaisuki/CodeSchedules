@@ -25,7 +25,7 @@
           <tbody>
             <tr>
               <td class="text-center"><%= Task.find_by(id: params[:task_id])&.name || "タスクが選択されていません" %></td>
-              <td class="text-center"><%= Task.find_by(id: params[:task_id])&.average_time.present? ? "#{Task.find_by(id: params[:task_id]).average_time}分" : "データなし" %></td>
+              <td class="text-center"><%= Task.find_by(id: params[:task_id])&.calculate_average_time.present? ? "#{Task.find_by(id: params[:task_id]).calculate_average_time}分" : "データなし" %></td>
             </tr>
           </tbody>
         </table>

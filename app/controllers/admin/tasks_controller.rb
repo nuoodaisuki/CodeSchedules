@@ -45,6 +45,6 @@ class Admin::TasksController < Admin::ApplicationController
 
   # 許可されたパラメータを指定
   def task_params
-    params.require(:task).permit(:name, :explanation, :average_time)
+    params.require(:task).permit(:name, :explanation)
   end
 end

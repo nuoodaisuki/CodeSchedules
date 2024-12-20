@@ -114,7 +114,6 @@ ActiveRecord::Schema.define(version: 2024_12_19_121506) do
   create_table "tasks", force: :cascade do |t|
     t.string "name", null: false
     t.string "explanation", null: false
-    t.integer "average_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
