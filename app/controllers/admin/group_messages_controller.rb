@@ -1,5 +1,7 @@
 class Admin::GroupMessagesController < ApplicationController
 
+  before_action :authenticate_admin!
+
   # グループ内メッセージ一覧表示
   def index
     @group = Group.find(params[:group_id])

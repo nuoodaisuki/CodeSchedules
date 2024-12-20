@@ -10,13 +10,11 @@ class Public::SearchesController < ApplicationController
       redirect_to posts_path, alert: "文字を入力して下さい。"
     else
       case range
-      when "自己紹介文"
-        @users = User.looks(params[:word])
       when "実装機能"
         @posts = Post.looks(params[:word])
-      when "グループの作成者の苗字か名前"
+      when "グループの作成者名"
         @groups = Group.search_by_owner_name(params[:word])
-      when "グループメンバーの苗字か名前"
+      when "グループメンバー名"
         @groups = Group.search_by_member_name(params[:word])
       end
     end

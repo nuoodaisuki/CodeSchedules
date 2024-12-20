@@ -29,6 +29,7 @@ root to: "public/homes#about" # アプリ起動時に about ページを表示
 
   scope module: :public do
     resources :posts, only: [:new, :create, :edit, :update, :destroy, :index, :show] do
+      resource :favorite, only: [:create, :destroy]
       resources :comments, only: [:create, :edit, :update, :destroy]
     end
     resources :tasks, only: [:index, :show]
@@ -36,9 +37,10 @@ root to: "public/homes#about" # アプリ起動時に about ページを表示
     get "users/information/:id" => "users#show", as: 'user'
     patch "users/:id" => "users#update", as: 'change'
     delete "users/:id" => "users#destroy", as: 'withdraw'
+    get "users/:id/favorite_posts" => "users#favorites", as: 'favorite_posts'
     resources :users, only: [:edit]
     resources :groups, only: [:new, :index, :show, :create, :edit, :update] do
-      resources :group_messages, only: [:create, :index, :edit, :update, :destroy]
+      resources :group_messages, only: [:create, :index, :destroy]
       resource :group_users, only: [:create, :destroy]
       member do
         get :pending_users # 承認待ち画面

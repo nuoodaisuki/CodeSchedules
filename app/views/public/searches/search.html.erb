@@ -2,29 +2,7 @@
   <%= render "public/shared/search" %>
 </div>
 
-<% if @users.present? %>
-  <div class="table-responsive" style="width: 95%; margin: 0 auto;">
-    <h2 class="mb-3">自己紹介文に「<%= @word %>」が含まれるユーザー</h2>
-    <table class="table table-bordered table-hover text-center">
-      <thead>
-        <tr>
-          <th></th>
-          <th>名前</th>
-          <th>自己紹介</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |user| %>
-          <tr>
-            <td><%= image_tag(user.image.attached? ? user.image : "no_image.jpg", size: "50x50", class: "img-fluid") %></td>
-            <td style="vertical-align: middle;"><%= link_to user.name, user_path(user) %></td>
-            <td style="vertical-align: middle;"><%= user.introduction %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-<% elsif @posts.present? %>
+<% if @posts.present? %>
   <div class="table-responsive" style="width: 80%; margin: 0 auto;">
     <h2 class="mb-3">「<%= @word %>」を実装した投稿一覧</h2>
     <table class="table table-bordered table-hover text-center">
