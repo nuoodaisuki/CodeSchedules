@@ -19,8 +19,8 @@
     </div>
 
     <!-- ボタン -->
-    <div class="text-center mt-4">
-      <%= link_to 'カレンダーで日付を選ぶ', calendar_path(task_id: @task.id), class: 'btn btn-primary btn-lg' %>
+    <div class="text-center mt-4 mr-4">
+      <%= link_to '実装予定日の選択画面へ', new_post_path(task_id: @task.id), class: 'btn btn-primary btn-lg' %>
     </div>
   </div>
 </div>

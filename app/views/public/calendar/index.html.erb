@@ -1,19 +1,1 @@
-<h1 class="text-center">日付を選択してください</h1>
 <div id="calendar"></div>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const calendarEl = document.getElementById('calendar');
-    const calendar = new FullCalendar.Calendar(calendarEl, {
-      initialView: 'dayGridMonth',
-      locale: 'ja',
-      dateClick: function(info) {
-        const selectedDate = info.dateStr;
-        const taskId = "<%= params[:task_id] %>";
-        const url = "<%= new_post_path %>?task_id=" + taskId + "&date=" + selectedDate;
-        window.location.href = url;
-      }
-    });
-    calendar.render();
-  });
-</script>

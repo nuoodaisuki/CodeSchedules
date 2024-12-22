@@ -4,20 +4,20 @@
     <!-- タスク選択後の表示 -->
     <div class="d-flex flex-column justify-content-start align-items-center" style="min-height: 90vh; padding-top: 5vh;">
       <div class="mb-3 text-center" style="width: 90%;">
-        <h3 class="mt-3">選択したタスク</h3>
+        <h3 class="mt-3">選択した機能</h3>
         <table class="table table-bordered mx-auto" style="width: 100%;">
           <thead>
             <tr>
-              <th class="text-center">タスク名</th>
+              <th class="text-center">機能名</th>
               <th class="text-center">平均所要時間</th>
-              <th class="text-center">選択した日付</th>
+              <th class="text-center">実装予定日</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td class="text-center"><%= Task.find_by(id: params[:task_id])&.name || "タスクが選択されていません" %></td>
               <td class="text-center"><%= Task.find_by(id: params[:task_id])&.calculate_average_time.present? ? "#{Task.find_by(id: params[:task_id]).calculate_average_time}分" : "データなし" %></td>
-              <td class="text-center"><%= params[:date] %></td>
+              <td class="text-center"><%= f.date_field :start, required: true %></td>
             </tr>
           </tbody>
         </table>
@@ -37,11 +37,11 @@
     <!-- タスク未選択時 -->
     <div class="d-flex justify-content-center align-items-center flex-column" style="height: 80vh;">
       <p class="display-4 text-center" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.4;">
-        タスクを選ぶボタンから<br>
-        タスクを選んで<br>
+        「機能一覧へ」ボタンから<br>
+        実装したい機能を選んで<br>
         スケジュールを立てよう！
       </p>
-      <%= link_to 'タスクを選ぶ', tasks_path, class: 'btn btn-primary btn-lg' %>
+      <%= link_to '機能一覧へ', tasks_path, class: 'btn btn-primary btn-lg' %>
     </div>
   <% end %>
 

@@ -26,12 +26,11 @@ class Public::PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @date = params[:date]
-    @task = Task.find_by(id: params[:task_id])
   end
 
   def create
     @post = current_user.posts.build(post_params)
+    @post.end = @post.start
     if @post.save
       redirect_to user_path(current_user), notice: "スケジュールを作成しました。"
     else
@@ -76,7 +75,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:task_id, :time_taken, :date, :note, :is_completion)
+    params.require(:post).permit(:task_id, :time_taken, :start, :end, :note, :is_completion)
   end
 
   def check_own_post

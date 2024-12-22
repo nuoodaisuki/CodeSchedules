@@ -104,7 +104,8 @@ ActiveRecord::Schema.define(version: 2024_12_19_121506) do
     t.integer "task_id", null: false
     t.integer "time_taken"
     t.text "note"
-    t.date "date", null: false
+    t.datetime "start", null: false
+    t.datetime "end", null: false
     t.boolean "is_completion", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

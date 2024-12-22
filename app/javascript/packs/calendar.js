@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
       plugins: [dayGridPlugin],
       initialView: 'dayGridMonth',
       locale: 'ja',
-      events: '/calendars/show', // サーバーからイベントを取得するエンドポイント
+      events: '/calendar', // サーバーからイベントを取得するエンドポイント
       dateClick: function(info) {
         // 日付クリック時の挙動
         window.location.href = `/calendars/day_posts?date=${info.dateStr}`;

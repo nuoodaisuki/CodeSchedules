@@ -55,6 +55,7 @@ class Public::UsersController < ApplicationController
   end
 
   def calendar_posts
+    @user = current_user
     @date = params[:date]
     @posts = current_user.posts.where(date: @date)
   end

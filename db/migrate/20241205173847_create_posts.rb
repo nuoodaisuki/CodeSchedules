@@ -5,7 +5,8 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.references :task, null: false, foreign_key: true
       t.integer :time_taken
       t.text :note
-      t.date :date, null: false
+      t.datetime :start, null: false
+      t.datetime :end, null: false
       t.boolean :is_completion, default: false, null: false
       t.timestamps
     end
