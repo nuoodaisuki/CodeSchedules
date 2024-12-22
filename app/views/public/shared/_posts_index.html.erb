@@ -1,0 +1,70 @@
+<table class="table table-bordered table-hover" style="max-width: 90%;">
+  <thead class="thead-light">
+    <tr>
+      <% if show_username %>
+        <th>ユーザー名</th>
+      <% end %>
+      <th>実装した機能</th>
+      <th>かかった時間</th>
+      <th>いいね数</th>
+      <th>コメント数</th>
+      <% if show_buttons %>
+        <th></th> <!-- 編集ボタン -->
+        <th></th> <!-- 削除ボタン -->
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% posts.each do |post| %>
+      <tr>
+        <% if show_username %>
+          <!-- ユーザー名 -->
+          <td><%= link_to post.user.name, user_path(post.user), class: "text-decoration-none text-primary" %></td>
+        <% end %>
+        
+        <!-- 実装した機能 -->
+        <td <%= post.user == current_user && post.is_completion ? "class='green'" : "" %>>
+          <% if post.is_completion %>
+            <%= link_to post.task.name, post_path(post), class: "text-decoration-none text-primary" %>
+          <% else %>
+            <%= link_to post.task.name + "(実装中)", post_path(post), class: "text-decoration-none text-primary" %>
+          <% end %>
+        </td>
+        
+        <!-- 所要時間 -->
+        <td <%= post.user == current_user && post.is_completion ? "class='green'" : "" %>>
+          <% if post.time_taken.nil? %>
+            実装完了後入力
+          <% else %>
+            <%= post.time_taken %> 分
+          <% end %>
+        </td>
+        
+        <!-- いいね数 -->
+        <td <%= post.user == current_user && post.is_completion ? "class='green'" : "" %>>
+          <%= "#{post.favorites.count} いいね" %>
+        </td>
+        
+        <!-- コメント数 -->
+        <td <%= post.user == current_user && post.is_completion ? "class='green'" : "" %>>
+          <%= "#{post.comments.count} コメント" %>
+        </td>
+        
+        <% if show_buttons %>
+          <!-- 編集ボタン -->
+          <td class="text-center <%= post.is_completion ? 'green' : '' %>">
+            <% if post.is_completion %>
+              <%= link_to "メモの変更", edit_post_path(post), class: "btn btn-warning", style: "width: 150px; margin-right: 5px;" %>
+            <% else %>
+              <%= link_to "実装完了！", edit_post_path(post), class: "btn btn-warning", style: "width: 150px; margin-right: 5px;" %>
+            <% end %>
+          </td>
+          <!-- 削除ボタン -->
+          <td class="text-center <%= post.is_completion ? 'green' : '' %>">
+            <%= link_to "削除", post_path(post), method: :delete, class: "btn btn-danger", style: "width: 150px;", data: { confirm: "本当に削除しますか？" } %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

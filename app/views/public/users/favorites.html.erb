@@ -10,36 +10,6 @@
         <%= @user.name %>さんのお気に入り記事一覧
       <% end %>
     </h3>
-    <table class="table table-bordered table-hover" style="max-width: 90%;">
-      <thead class="thead-light">
-        <tr>
-          <th>ユーザー名</th>
-          <th>実装した機能</th>
-          <th>かかった時間</th>
-          <th>いいね数</th>
-          <th>コメント数</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @favorite_posts.each do |post| %>
-          <tr>
-            <!-- ユーザー名 -->
-            <td><%= link_to post.user.name, user_path(post.user), class: "text-decoration-none text-primary" %></td>
-            
-            <!-- タスクの名前 -->
-            <td><%= link_to post.task.name, post_path(post), class: "text-decoration-none text-primary" %></td>
-            
-            <!-- 所要時間 -->
-            <td><%= post.time_taken %> 分</td>
-
-            <!-- いいね数 -->
-            <td><%= "#{post.favorites.count} いいね" %></td>
-
-            <!-- コメント数 -->
-            <td><%= "#{post.comments.count} コメント" %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <%= render "public/shared/posts_index", posts: @favorite_posts, show_username: true, show_buttons: false %>
   </div>
 </div>
