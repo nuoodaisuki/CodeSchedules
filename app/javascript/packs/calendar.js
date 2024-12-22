@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var calendar = new Calendar(calendarEl, {
       plugins: [dayGridPlugin],
       initialView: 'dayGridMonth',
+      locale: 'ja',
       events: '/calendars/show', // サーバーからイベントを取得するエンドポイント
       dateClick: function(info) {
         // 日付クリック時の挙動
