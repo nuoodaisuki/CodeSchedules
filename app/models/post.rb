@@ -2,6 +2,7 @@ class Post < ApplicationRecord
 
   validates :task_id, presence: true
   validates :time_taken, presence: true, on: :update
+  validates :date, presence: true
 
   belongs_to :user
   belongs_to :task

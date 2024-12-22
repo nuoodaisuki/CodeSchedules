@@ -26,7 +26,8 @@ class Public::PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @tasks = Task.all
+    @date = params[:date]
+    @task = Task.find_by(id: params[:task_id])
   end
 
   def create
@@ -75,7 +76,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:task_id, :time_taken, :note, :is_completion)
+    params.require(:post).permit(:task_id, :time_taken, :date, :note, :is_completion)
   end
 
   def check_own_post

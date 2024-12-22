@@ -1,14 +1,4 @@
 <%= form_with model: @post, url: posts_path, local: true do |f| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-      <ul>
-        <% @post.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <% if params[:task_id].present? %>
     <!-- タスク選択後の表示 -->
@@ -20,12 +10,14 @@
             <tr>
               <th class="text-center">タスク名</th>
               <th class="text-center">平均所要時間</th>
+              <th class="text-center">選択した日付</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td class="text-center"><%= Task.find_by(id: params[:task_id])&.name || "タスクが選択されていません" %></td>
               <td class="text-center"><%= Task.find_by(id: params[:task_id])&.calculate_average_time.present? ? "#{Task.find_by(id: params[:task_id]).calculate_average_time}分" : "データなし" %></td>
+              <td class="text-center"><%= params[:date] %></td>
             </tr>
           </tbody>
         </table>

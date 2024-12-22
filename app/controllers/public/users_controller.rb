@@ -54,6 +54,11 @@ class Public::UsersController < ApplicationController
     @favorite_posts = @user.favorited_posts.includes(:user).order(created_at: :desc) # 投稿の詳細を取得
   end
 
+  def calendar_posts
+    @date = params[:date]
+    @posts = current_user.posts.where(date: @date)
+  end
+
   private
 
   def user_params
