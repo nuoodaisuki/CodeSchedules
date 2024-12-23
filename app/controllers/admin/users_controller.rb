@@ -1,5 +1,4 @@
-class Admin::UsersController < ApplicationController
-  before_action :authenticate_admin!  # 管理者ログイン必須
+class Admin::UsersController < Admin::ApplicationController
 
   def index
     @users = User.all

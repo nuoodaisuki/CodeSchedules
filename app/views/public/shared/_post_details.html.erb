@@ -1,0 +1,56 @@
+<div class="col-9">
+  <h3 class="mt-3">実装した機能のメモ書き</h3>
+  <table class="table" style="max-width: <%= table_width || "60%" %>;">
+    <tr>
+      <td>実装した機能</td>
+      <td>
+        <%= @post.task.name %>
+        <% if show_completion_status && @post.is_completion == false %>
+          (実装中)
+        <% end %>
+      </td>
+      <td>
+        <% if delete_path %>
+          <%= link_to "この投稿を削除", delete_path, method: :delete,
+          data: { confirm: "本当にこの投稿を削除しますか？" },
+          class: "btn btn-danger" %>
+        <% end %>
+      </td>
+      <% if render_favorite_btn %>
+        <td id="favorite_btn_<%= @post.id %>">
+          <%= render "public/shared/favorite_btn", post: @post %>
+        </td>
+      <% end %>
+    </tr>
+  </table>
+
+  <div class="p-3 border mb-4" style="max-width: 95%; height: 350px; border-radius: 5px;">
+    <p><%= @post.note %></p>
+  </div>
+
+  <!-- コメント一覧 -->
+  <h4 class="mt-3 mb-3">コメント一覧</h4>
+  <div class="border p-3 mb-3" style="max-width: 95%; border-radius: 5px;">
+    <% @comments.each do |comment| %>
+      <div class="mb-3 pb-2 border-bottom">
+        <p class="mb-1"><%= comment.content %></p>
+        <div class="d-flex align-items-center justify-content-between">
+          <small class="text-muted">
+            コメント投稿者：<%= link_to comment.user.name, user_path_callable.call(comment.user), class: "text-decoration-none" %>
+          </small>
+          <div>
+            <% if comment.user == current_user || admin_signed_in? %>
+              <% if edit_comment_path_callable %>
+                <%= link_to "編集", edit_comment_path_callable.call(comment), class: "btn btn-sm btn-warning me-2" %>
+              <% end %>
+              <% if delete_comment_path_callable %>
+                <%= link_to "削除", delete_comment_path_callable.call(comment), method: :delete,
+                data: { confirm: "このコメントを削除しますか？" },
+                class: "btn btn-sm btn-danger" %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>

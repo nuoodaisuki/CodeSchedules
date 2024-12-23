@@ -32,7 +32,7 @@ root to: "public/homes#about" # アプリ起動時に about ページを表示
       resource :favorite, only: [:create, :destroy]
       resources :comments, only: [:create, :edit, :update, :destroy]
     end
-    resources :tasks, only: [:index, :show]
+    resources :tasks, only: [:index]
     get "search" => "searches#search"
     get "users/information/:id" => "users#show", as: 'user'
     patch "users/:id" => "users#update", as: 'change'

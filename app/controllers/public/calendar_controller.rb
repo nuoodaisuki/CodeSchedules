@@ -1,4 +1,4 @@
-class Public::CalendarController < ApplicationController
+class Public::CalendarController < Public::ApplicationController
 
   def index
     @posts = current_user.posts

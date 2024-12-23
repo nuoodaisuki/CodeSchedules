@@ -10,6 +10,6 @@
         <%= @user.name %>さんのお気に入り記事一覧
       <% end %>
     </h3>
-    <%= render "public/shared/posts_index", posts: @favorite_posts, show_username: true, show_buttons: false %>
+    <%= render "public/shared/posts_index", posts: @favorite_posts, show_username: true, show_buttons: false, is_favorites_page: true %>
   </div>
 </div>

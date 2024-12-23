@@ -1,6 +1,5 @@
-class Public::GroupsController < ApplicationController
+class Public::GroupsController < Public::ApplicationController
 
-  before_action :authenticate_user!
   before_action :ensure_guest_user
   before_action :ensure_correct_user, only: [:edit, :update]
 
@@ -21,7 +20,7 @@ class Public::GroupsController < ApplicationController
     @group = Group.new(group_params)
     @group.owner_id = current_user.id
     if @group.save
-      redirect_to group_path(@group)
+      redirect_to group_path(@group), notice: "グループを作成しました。"
     else
       flash.now[:alert] = "グループ名を入力して下さい。"
       render :new
@@ -35,7 +34,7 @@ class Public::GroupsController < ApplicationController
   def update
     @group = Group.find(params[:id])
     if @group.update(group_params)
-      redirect_to group_path(@group)
+      redirect_to group_path(@group), notice: "グループ情報を更新しました。"
     else
       flash.now[:alert] = "グループ名を入力してください。"
       render :edit

@@ -1,0 +1,12 @@
+<!-- 並べ替え用フォーム -->
+<%= form_with url: request.path, method: :get, local: true, class: "d-flex align-items-center" do |f| %>
+  <div class="form-group mb-0 mr-2">
+    <!-- 並べ替えラベルとセレクト -->
+    <%= f.label :sort, "並び替え", class: "form-label me-2" %>
+    <%= f.select :sort, options_for_select([["新しい順"], ["いいね数順"], ["コメント数順"]], params[:sort]), class: "form-select" %>
+  </div>
+  <!-- 並べ替えボタン -->
+  <div class="mb-2">
+    <%= f.submit "並べ替える", class: "btn btn-primary" %>
+  </div>
+<% end %>

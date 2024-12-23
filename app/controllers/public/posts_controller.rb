@@ -1,6 +1,5 @@
-class Public::PostsController < ApplicationController
+class Public::PostsController < Public::ApplicationController
 
-  before_action :authenticate_user!
   before_action :check_own_post, only: [:show]  # 自分の未了投稿のみ閲覧可能
 
   def index
@@ -22,10 +21,12 @@ class Public::PostsController < ApplicationController
       redirect_to posts_path, alert: "他のユーザーの未了投稿は閲覧できません。"
     end
     @comment = Comment.new
+    @comments = @post.comments
   end
 
   def new
     @post = Post.new
+    @task = Task.find_by(id: params[:task_id])
   end
 
   def create

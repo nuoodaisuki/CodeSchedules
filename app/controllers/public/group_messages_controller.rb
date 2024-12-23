@@ -1,6 +1,5 @@
-class Public::GroupMessagesController < ApplicationController
+class Public::GroupMessagesController < Public::ApplicationController
 
-  before_action :authenticate_user!
   before_action :ensure_guest_user
   
   # メッセージ一覧表示

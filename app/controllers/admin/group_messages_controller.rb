@@ -1,6 +1,4 @@
-class Admin::GroupMessagesController < ApplicationController
-
-  before_action :authenticate_admin!
+class Admin::GroupMessagesController < Admin::ApplicationController
 
   # グループ内メッセージ一覧表示
   def index

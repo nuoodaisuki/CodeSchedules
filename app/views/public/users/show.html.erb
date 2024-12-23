@@ -4,13 +4,13 @@
 
   <!-- 投稿一覧 -->
   <div class="col-md-9">
-    <h3 class="mt-3">
+    <div class="mt-4 mb-3 d-flex justify-content-between align-items-center" style="max-width: 90%;">
+      <h3><%= @user == current_user ? '自分の実装機能一覧' : "#{@user.name}さんの実装した機能一覧" %></h3>
       <% if @user == current_user %>
-        自分の実装機能一覧
-      <% else %>
-        <%= @user.name %>さんの実装した機能一覧
+        <%= link_to 'スケジュールをカレンダーで確認', calendar_path, class: "btn btn-primary", data: { turbolinks: false } %>
       <% end %>
-    </h3>
+    </div>
+
     <div class="d-flex justify-content-between align-items-center mt-3" style="max-width: 90%;">
       <h5>
         <% if @user == current_user %>
@@ -19,18 +19,8 @@
           <%= link_to "お気に入り記事一覧へ", favorite_posts_path(@user) %>
         <% end %>
       </h5>
-      <%= form_with url: request.path, method: :get, local: true, class: "d-flex align-items-center" do |f| %>
-        <div class="form-group mb-0 mr-2">
-          <!-- 並べ替えラベルとセレクト -->
-          <%= f.label :sort, "並び替え", class: "form-label me-2" %>
-          <%= f.select :sort, options_for_select([["新しい順"], ["いいね数順"], ["コメント数順"]], params[:sort]), class: "form-select" %>
-        </div>
-        <!-- 並べ替えボタン -->
-        <div class="mb-2">
-          <%= f.submit "並べ替える", class: "btn btn-primary" %>
-        </div>
-      <% end %>
+      <%= render "public/shared/sort_form" %>
     </div>
-    <%= render "public/shared/posts_index", posts: @posts, show_username: false, show_buttons: @user == current_user %>
+    <%= render "public/shared/posts_index", posts: @posts, show_username: false, show_buttons: @user == current_user, is_favorites_page: false %>
   </div>
 </div>

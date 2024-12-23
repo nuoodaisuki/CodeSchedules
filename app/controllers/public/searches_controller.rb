@@ -1,6 +1,4 @@
-class Public::SearchesController < ApplicationController
-
-  before_action :authenticate_user!
+class Public::SearchesController < Public::ApplicationController
 
   def search
     range = params[:range]   # 検索対象モデル
