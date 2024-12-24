@@ -1,0 +1,248 @@
+[33mcommit dae272b0a6bbdaf2c633d6c4c9eb13865c67ee1d[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: EC2 Default User <ec2-user@ip-172-31-37-191.ap-northeast-1.compute.internal>
+Date:   Tue Dec 24 07:48:13 2024 +0000
+
+    デプロイ用
+
+[33mcommit 588325197c9eebbfd26c5e23525d426a469f14da[m
+Author: EC2 Default User <ec2-user@ip-172-31-37-191.ap-northeast-1.compute.internal>
+Date:   Fri Dec 20 18:36:51 2024 +0000
+
+    修正
+
+[33mcommit 6986e6c11e961fcf76f64cb09a16a737728e9f22[m
+Author: EC2 Default User <ec2-user@ip-172-31-37-191.ap-northeast-1.compute.internal>
+Date:   Fri Dec 20 11:45:27 2024 +0000
+
+    デプロイ用
+
+[33mcommit 0e2d6bdcf55a4accffe235b648f0fdcce351d4fa[m
+Merge: 8541b29 e63cf01
+Author: nuoodaisuki <aramaki0525.nuoo@gmail.com>
+Date:   Fri Dec 20 20:43:59 2024 +0900
+
+    Merge pull request #7 from nuoodaisuki/feature/favorite
+    
+    いいね機能と非同期通信の実装完了
+
+[33mcommit e63cf010b23028cb6c17882a138d105dafe61bc9[m[33m ([m[1;31morigin/feature/favorite[m[33m, [m[1;32mfeature/favorite[m[33m)[m
+Author: EC2 Default User <ec2-user@ip-172-31-37-191.ap-northeast-1.compute.internal>
+Date:   Fri Dec 20 11:43:04 2024 +0000
+
+    いいね機能と非同期通信の実装完了
+
+[33mcommit 8541b2953f5042fe1cea212b34ac2787b5c427fb[m
+Author: EC2 Default User <ec2-user@ip-172-31-37-191.ap-northeast-1.compute.internal>
+Date:   Thu Dec 19 09:39:04 2024 +0000
+
+    デプロイ用
+
+[33mcommit b4c79d88d012f434bb79b502a7b8a544ece9bc06[m
+Merge: bd06303 f65e5e3
+Author: nuoodaisuki <aramaki0525.nuoo@gmail.com>
+Date:   Thu Dec 19 18:32:25 2024 +0900
+
+    Merge pull request #6 from nuoodaisuki/feature/group
+    
+    Feature/group
+
+[33mcommit f65e5e32b221e582eecfae36e77966f9bf508247[m[33m ([m[1;31morigin/feature/group[m[33m, [m[1;32mfeature/group[m[33m)[m
+Author: EC2 Default User <ec2-user@ip-172-31-37-191.ap-northeast-1.compute.internal>
+Date:   Thu Dec 19 09:30:50 2024 +0000
+
+    グループ機能完成
+
+[33mcommit 1c29d621ff1d34187af3079e55855fb643c274a3[m
+Author: EC2 Default User <ec2-user@ip-172-31-37-191.ap-northeast-1.compute.internal>
+Date:   Tue Dec 17 18:29:32 2024 +0000
+
+    グループ機能途中まで
+
+[33mcommit bd0630396ef8647cee046e4ce88d5d7fa34cf500[m
+Author: EC2 Default User <ec2-user@ip-172-31-37-191.ap-northeast-1.compute.internal>
+Date:   Mon Dec 16 11:45:35 2024 +0000
+
+    2ndデプロイ＋テスト完了
+
+[33mcommit 3b72cf867051a5e87a8691c5562217f950de279d[m
+Author: EC2 Default User <ec2-user@ip-172-31-37-191.ap-northeast-1.compute.internal>
+Date:   Sat Dec 14 17:31:36 2024 +0000
+
+    実装フェーズ２完了
+
+[33mcommit 938757fd3c931b890bb50338a3441a3e828bc970[m
+Author: EC2 Default User <ec2-user@ip-172-31-37-191.ap-northeast-1.compute.internal>
+Date:   Sat Dec 14 17:22:50 2024 +0000
+
+    デプロイ用
+
+[33mcommit 6e8af844c4763ff2cfeb0d36c5f487d99f87267c[m
+Merge: c263bb9 d839a4f
+Author: nuoodaisuki <aramaki0525.nuoo@gmail.com>
+Date:   Sun Dec 15 02:20:44 2024 +0900
+
+    Merge pull request #5 from nuoodaisuki/feature/administrator
+    
+    管理者機能実装完了
+
+[33mcommit d839a4f0f278e604e6b40a584a50b0121d18d3ba[m[33m ([m[1;31morigin/feature/administrator[m[33m, [m[1;32mfeature/administrator[m[33m)[m
+Author: EC2 Default User <ec2-user@ip-172-31-37-191.ap-northeast-1.compute.internal>
+Date:   Sat Dec 14 17:19:50 2024 +0000
+
+    管理者機能実装完了
+
+[33mcommit c263bb990eee29b09cfc7a89927c16cb575b1f6a[m
+Merge: 0d68ab5 246df14
+Author: nuoodaisuki <aramaki0525.nuoo@gmail.com>
+Date:   Sat Dec 14 18:37:23 2024 +0900
+
+    Merge pull request #4 from nuoodaisuki/feature/comment
+    
+    コメント機能完成
+
+[33mcommit 246df1496b3e204b7c8f69f5c3364c25d9005fbc[m[33m ([m[1;31morigin/feature/comment[m[33m, [m[1;32mfeature/comment[m[33m)[m
+Author: EC2 Default User <ec2-user@ip-172-31-37-191.ap-northeast-1.compute.internal>
+Date:   Sat Dec 14 09:35:32 2024 +0000
+
+    コメント機能完成
+
+[33mcommit 0d68ab5a6abae7e687a2803a56345efdde201346[m
+Author: EC2 Default User <ec2-user@ip-172-31-37-191.ap-northeast-1.compute.internal>
+Date:   Fri Dec 13 16:44:05 2024 +0000
+
+    修正
+
+[33mcommit 949c63cc0e8186009795c1a7f4c28fd5aadc8a15[m
+Author: EC2 Default User <ec2-user@ip-172-31-37-191.ap-northeast-1.compute.internal>
+Date:   Fri Dec 13 16:15:45 2024 +0000
+
+    デプロイ用
+
+[33mcommit 5ed1352da02868e240225c3289dbd18fc7b3e7e9[m
+Merge: dd5ffc0 36ca04a
+Author: nuoodaisuki <aramaki0525.nuoo@gmail.com>
+Date:   Sat Dec 14 01:13:56 2024 +0900
+
+    Merge pull request #3 from nuoodaisuki/feature/search
+    
+    検索機能実装完了
+
+[33mcommit 36ca04aeb34749367fbf02cc1189a9ae61f11438[m[33m ([m[1;31morigin/feature/search[m[33m, [m[1;32mfeature/search[m[33m)[m
+Author: EC2 Default User <ec2-user@ip-172-31-37-191.ap-northeast-1.compute.internal>
+Date:   Fri Dec 13 16:13:11 2024 +0000
+
+    検索機能実装完了
+
+[33mcommit dd5ffc048b2e8863fef59c9ff50874fc01e325f6[m
+Author: EC2 Default User <ec2-user@ip-172-31-37-191.ap-northeast-1.compute.internal>
+Date:   Thu Dec 12 16:41:24 2024 +0000
+
+    確認用
+
+[33mcommit d8523229f90e8671f2d48116561fcecaa59bb628[m
+Author: EC2 Default User <ec2-user@ip-172-31-37-191.ap-northeast-1.compute.internal>
+Date:   Thu Dec 12 16:36:35 2024 +0000
+
+    confirm
+
+[33mcommit 32523adb3f398a44ce3472c1be0b5a6cc4645e37[m
+Author: EC2 Default User <ec2-user@ip-172-31-37-191.ap-northeast-1.compute.internal>
+Date:   Thu Dec 12 08:12:17 2024 +0000
+
+    修正
+
+[33mcommit 92e040dc18dce2650aa7a1acbb8d465517d0ba6d[m
+Author: EC2 Default User <ec2-user@ip-172-31-37-191.ap-northeast-1.compute.internal>
+Date:   Thu Dec 12 08:00:18 2024 +0000
+
+    練習
+
+[33mcommit 310cb64805ac588dea63fdc4e7492904fd0e0fa3[m
+Merge: 5cf7623 467ebfb
+Author: nuoodaisuki <aramaki0525.nuoo@gmail.com>
+Date:   Thu Dec 12 16:52:05 2024 +0900
+
+    Merge pull request #2 from nuoodaisuki/feature/add-lorem-ipsum
+    
+    練習
+
+[33mcommit 467ebfb72b905e90744d073ac36dd4350abc8eea[m
+Author: EC2 Default User <ec2-user@ip-172-31-37-191.ap-northeast-1.compute.internal>
+Date:   Thu Dec 12 07:50:44 2024 +0000
+
+    練習
+
+[33mcommit 5cf76230935e432775000571431fe80be4ab2387[m
+Author: EC2 Default User <ec2-user@ip-172-31-37-191.ap-northeast-1.compute.internal>
+Date:   Thu Dec 12 06:42:10 2024 +0000
+
+    Templete
+
+[33mcommit 4c2c06c678b534bbefd44546db5f812ebbb953cb[m
+Author: EC2 Default User <ec2-user@ip-172-31-37-191.ap-northeast-1.compute.internal>
+Date:   Tue Dec 10 17:10:03 2024 +0000
+
+    1stデプロイ＋テスト完了
+
+[33mcommit 56be19bd8f6476d653727f68848d019a4285624b[m
+Author: EC2 Default User <ec2-user@ip-172-31-37-191.ap-northeast-1.compute.internal>
+Date:   Tue Dec 10 17:02:57 2024 +0000
+
+    1stphasecomplete
+
+[33mcommit 33785b87a6be41bddccc6d8bf97a3af5da563a91[m
+Author: EC2 Default User <ec2-user@ip-172-31-37-191.ap-northeast-1.compute.internal>
+Date:   Tue Dec 10 16:31:45 2024 +0000
+
+    test
+
+[33mcommit b1286e064ef50a3309ad4cbbac535a68a4caff90[m
+Author: EC2 Default User <ec2-user@ip-172-31-37-191.ap-northeast-1.compute.internal>
+Date:   Tue Dec 10 16:20:41 2024 +0000
+
+    confirm
+
+[33mcommit f7e60618e4cddc9e1a659c09fd2742853caef5a9[m
+Author: EC2 Default User <ec2-user@ip-172-31-37-191.ap-northeast-1.compute.internal>
+Date:   Mon Dec 9 12:58:12 2024 +0000
+
+    deploy setting
+
+[33mcommit 39b7ef0e30a495f11b974a45fe112e1285d2268e[m
+Author: EC2 Default User <ec2-user@ip-172-31-37-191.ap-northeast-1.compute.internal>
+Date:   Mon Dec 9 02:51:43 2024 +0000
+
+    実装フェーズ１完了
+
+[33mcommit b3435068f7673575b600732ce3af42c2f427c8a4[m
+Author: EC2 Default User <ec2-user@ip-172-31-37-191.ap-northeast-1.compute.internal>
+Date:   Sun Dec 8 19:24:32 2024 +0000
+
+    confirm
+
+[33mcommit ef658b3ef40c162c479e9465cf7fe1282f371920[m
+Merge: b0f3d56 32d3fe7
+Author: nuoodaisuki <aramaki0525.nuoo@gmail.com>
+Date:   Sun Dec 8 04:03:06 2024 +0900
+
+    Merge pull request #1 from nuoodaisuki/develop
+    
+    1stphasefinish
+
+[33mcommit 32d3fe7f74a914ef4e4a2a72fd945e8e6e5bd23f[m
+Author: EC2 Default User <ec2-user@ip-172-31-37-191.ap-northeast-1.compute.internal>
+Date:   Sat Dec 7 19:00:53 2024 +0000
+
+    1stphasefinish
+
+[33mcommit b0f3d5636124fddfc8efd7013f379e9fb4046e10[m
+Author: EC2 Default User <ec2-user@ip-172-31-37-191.ap-northeast-1.compute.internal>
+Date:   Thu Dec 5 03:06:58 2024 +0000
+
+    set
+
+[33mcommit fc9350d82911066afbf2472a8a01a763eeaa74e8[m
+Author: EC2 Default User <ec2-user@ip-172-31-37-191.ap-northeast-1.compute.internal>
+Date:   Thu Nov 28 04:10:08 2024 +0000
+
+    README
