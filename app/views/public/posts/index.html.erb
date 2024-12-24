@@ -11,50 +11,8 @@
     <div class="d-flex justify-content-between align-items-center mt-3" style="max-width: 90%;">
     <!-- タイトル -->
       <h3>投稿一覧</h3>
-      
-      <!-- 並べ替え用フォーム -->
-      <%= form_with url: request.path, method: :get, local: true, class: "d-flex align-items-center" do |f| %>
-        <div class="form-group mb-0 mr-2">
-          <!-- 並べ替えラベルとセレクト -->
-          <%= f.label :sort, "並び替え", class: "form-label me-2" %>
-          <%= f.select :sort, options_for_select([["新しい順"], ["いいね数順"], ["コメント数順"]], params[:sort]), class: "form-select" %>
-        </div>
-        <!-- 並べ替えボタン -->
-        <div class="mb-2">
-          <%= f.submit "並べ替える", class: "btn btn-primary" %>
-        </div>
-      <% end %>
+      <%= render "public/shared/sort_form" %>
     </div>
-    <table class="table table-bordered table-hover" style="max-width: 90%;">
-      <thead class="thead-light">
-        <tr>
-          <th>ユーザー名</th>
-          <th>実装した機能</th>
-          <th>かかった時間</th>
-          <th>いいね数</th>
-          <th>コメント数</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @posts.each do |post| %>
-          <tr>
-            <!-- ユーザー名 -->
-            <td><%= link_to post.user.name, user_path(post.user), class: "text-decoration-none text-primary" %></td>
-            
-            <!-- タスクの名前 -->
-            <td><%= link_to post.task.name, post_path(post), class: "text-decoration-none text-primary" %></td>
-            
-            <!-- 所要時間 -->
-            <td><%= post.time_taken %> 分</td>
-
-            <!-- いいね数 -->
-            <td><%= "#{post.favorites.count} いいね" %></td>
-
-            <!-- コメント数 -->
-            <td><%= "#{post.comments.count} コメント" %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <%= render "public/shared/posts_index", posts: @posts, show_username: true, show_buttons: false, is_favorites_page: false %>
   </div>
 </div>

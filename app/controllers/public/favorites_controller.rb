@@ -1,4 +1,4 @@
-class Public::FavoritesController < ApplicationController
+class Public::FavoritesController < Public::ApplicationController
 
   def create
     @post = Post.find(params[:post_id])

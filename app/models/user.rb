@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :group_users, dependent: :destroy
   has_many :group_messages, dependent: :destroy
+  has_many :owned_groups, class_name: "Group", foreign_key: "owner_id", dependent: :destroy
   has_many :groups, through: :group_users
   has_many :favorites, dependent: :destroy
   has_many :favorited_posts, through: :favorites, source: :post

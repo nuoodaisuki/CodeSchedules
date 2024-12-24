@@ -1,42 +1,15 @@
 <div class="row">
-  <%= render "public/shared/user_info", path: admin_user_path(@post.user), user: @post.user, link_to_user: true, editable: false %>
+  <%= render "public/shared/user_info", path: admin_user_path(@post.user), user: @post.user, link_to_user: true, editable: false, title: 'User info' %>
 
-  <div class="col-9">
-    <h3 class="mt-3">実装した機能のメモ書き</h3>
-    <table class="table" style="max-width: 60%;">
-      <tr>
-        <td>実装した機能</td>
-        <td><%= @post.task.name %></td>
-        <td>
-          <%= link_to "この投稿を削除", admin_post_path(@post), method: :delete,
-          data: { confirm: "本当にこの投稿を削除しますか？" },
-          class: "btn btn-danger" %>
-        </td>
-      </tr>
-    </table>
+  <%= render "public/shared/post_details", {
+  table_width: "60%",
+  show_completion_status: false,
+  render_favorite_btn: false,
+  delete_path: admin_post_path(@post),
+  user_path_callable: ->(user) { admin_user_path(user) },
+  edit_comment_path_callable: nil,
+  delete_comment_path_callable: ->(comment) { admin_post_comment_path(@post, comment) }
+  } %>
 
-    <div class="p-3 border mb-4" style="max-width: 95%; height: 350px; border-radius: 5px;" >
-      <p><%= @post.note %></p>
-    </div>
-
-    <!-- コメント一覧 -->
-    <h4 class="mt-3 mb-3">コメント一覧</h4>
-    <div class="border p-3 mb-3" style="max-width: 95%; border-radius: 5px;">
-      <% @comments.each do |comment| %>
-        <div class="mb-3 pb-2 border-bottom">
-          <p class="mb-1"><%= comment.content %></p>
-          <div class="d-flex align-items-center justify-content-between">
-            <small class="text-muted">
-              コメント投稿者：<%= link_to comment.user.name, admin_user_path(comment.user), class: "text-decoration-none" %>
-            </small>
-            <div>
-              <%= link_to "削除", admin_post_comment_path(@post, comment), method: :delete,
-              data: { confirm: "このコメントを削除しますか？" },
-              class: "btn btn-danger btn-sm float-right" %>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
   </div>
 </div>

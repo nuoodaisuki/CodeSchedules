@@ -32,12 +32,14 @@ root to: "public/homes#about" # アプリ起動時に about ページを表示
       resource :favorite, only: [:create, :destroy]
       resources :comments, only: [:create, :edit, :update, :destroy]
     end
-    resources :tasks, only: [:index, :show]
+    resources :tasks, only: [:index]
     get "search" => "searches#search"
     get "users/information/:id" => "users#show", as: 'user'
     patch "users/:id" => "users#update", as: 'change'
     delete "users/:id" => "users#destroy", as: 'withdraw'
     get "users/:id/favorite_posts" => "users#favorites", as: 'favorite_posts'
+    get "users/calendar_posts" => 'users#calendar_posts', as: 'calendar_posts'
+    get 'calendar' => 'calendar#index', as: 'calendar'
     resources :users, only: [:edit]
     resources :groups, only: [:new, :index, :show, :create, :edit, :update] do
       resources :group_messages, only: [:create, :index, :destroy]

@@ -1,6 +1,4 @@
-class Admin::GroupsController < ApplicationController
-
-  before_action :authenticate_admin!
+class Admin::GroupsController < Admin::ApplicationController
 
   # グループ一覧表示
   def index

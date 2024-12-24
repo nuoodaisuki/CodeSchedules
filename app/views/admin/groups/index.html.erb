@@ -5,6 +5,7 @@
       <tr>
         <th></th>
         <th>グループ名</th>
+        <th>グループ作成者</th>
         <th></th>
         <th></th>
       </tr>
@@ -14,8 +15,9 @@
         <tr>
           <td><%= image_tag(group.group_image.attached? ? group.group_image : "no_image.jpg", size: "50x50") %></td>
           <td><%= group.name %></td>
-          <td><%= link_to "チャットルーム", admin_group_group_messages_path(group), class: "btn btn-primary btn-sm" %></td>
-          <td><%= link_to "削除", admin_group_path(group), method: :delete, data: { confirm: "本当にこのグループを削除しますか？" }, class: "btn btn-danger btn-sm" %></td>
+          <td><%= link_to group.owner.name, admin_user_path(group.owner) %>
+          <td><%= link_to "メッセージ一覧", admin_group_group_messages_path(group), class: "btn btn-primary btn-sm" %></td>
+          <td><%= link_to "グループ削除", admin_group_path(group), method: :delete, data: { confirm: "本当にこのグループを削除しますか？" }, class: "btn btn-danger btn-sm" %></td>
         </tr>
       <% end %>
     </tbody>

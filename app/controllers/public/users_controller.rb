@@ -1,6 +1,5 @@
-class Public::UsersController < ApplicationController
+class Public::UsersController < Public::ApplicationController
   
-  before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit]
 
   def show
@@ -52,6 +51,12 @@ class Public::UsersController < ApplicationController
   def favorites
     @user = User.find(params[:id])
     @favorite_posts = @user.favorited_posts.includes(:user).order(created_at: :desc) # 投稿の詳細を取得
+  end
+
+  def calendar_posts
+    @user = current_user
+    @date = Date.parse(params[:date])
+    @posts = current_user.posts.where(start: @date.all_day)
   end
 
   private

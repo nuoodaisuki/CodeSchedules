@@ -1,30 +1,29 @@
-<header class="bg-light border-bottom border-3" style="height: 20vh;">
+<header class="bg-dark" style="height: 10vh; color: white;">
   <nav class="h-100">
-    <div class="container h-100 d-flex align-items-center justify-content-end">
-      <ul class="list-unstyled d-flex m-0" style="gap: 1rem;">
+    <div class="container h-100 d-flex align-items-center justify-content-end" style="padding-right: 1rem;">
+      <ul class="list-unstyled d-flex m-0" style="gap: 1.5rem;">
         <% if admin_signed_in? %>
           <!-- 管理者ログイン時のリンク -->
-          <li><%= link_to 'タスク一覧', admin_tasks_path, class: "btn btn-outline-primary" %></li>
-          <li><%= link_to '新規タスク作成', new_admin_task_path, class: "btn btn-outline-primary" %></li>
-          <li><%= link_to 'ユーザー一覧', admin_users_path, class: "btn btn-outline-primary" %></li>
-          <li><%= link_to 'グループ一覧', admin_groups_path, class: "btn btn-outline-primary" %></li>
-          <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "btn btn-outline-danger" %></li>
+          <li><%= link_to 'タスク一覧', admin_tasks_path, class: "text-decoration-none text-white" %></li>
+          <li><%= link_to '新規タスク作成', new_admin_task_path, class: "text-decoration-none text-white" %></li>
+          <li><%= link_to 'ユーザー一覧', admin_users_path, class: "text-decoration-none text-white" %></li>
+          <li><%= link_to 'グループ一覧', admin_groups_path, class: "text-decoration-none text-white" %></li>
+          <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "text-decoration-none text-white" %></li>
         <% elsif user_signed_in? %>
           <!-- ユーザーログイン時のリンク -->
-          <li><%= link_to 'TOP', about_path, class: "btn btn-outline-primary" %></li>
-          <li><%= link_to '投稿一覧', posts_path, class: "btn btn-outline-primary" %></li>
-          <li><%= link_to 'スケジュール作成', new_post_path, class: "btn btn-outline-secondary" %></li>
-          <li><%= link_to 'マイページ', user_path(current_user), class: "btn btn-outline-success" %></li>
+          <li><%= link_to 'TOP', about_path, class: "text-decoration-none text-white" %></li>
+          <li><%= link_to '投稿一覧', posts_path, class: "text-decoration-none text-white" %></li>
+          <li><%= link_to 'スケジュール作成', new_post_path, class: "text-decoration-none text-white" %></li>
+          <li><%= link_to 'マイページ', user_path(current_user), class: "text-decoration-none text-white" %></li>
           <% if current_user.email != "guest@example.com" %>
-            <li><%= link_to '新グループ作成', new_group_path, class: "btn btn-outline-primary" %></li>
-            <li><%= link_to 'グループ一覧', groups_path, class: "btn btn-outline-secondary" %></li>
+            <li><%= link_to 'グループ一覧', groups_path, class: "text-decoration-none text-white" %></li>
           <% end %>
-          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn btn-outline-danger" %></li>
+          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "text-decoration-none text-white" %></li>
         <% else %>
           <!-- 未ログイン時のリンク -->
-          <li><%= link_to 'TOP', about_path, class: "btn btn-outline-primary" %></li>
-          <li><%= link_to '新規登録', new_user_registration_path, class: "btn btn-outline-success" %></li>
-          <li><%= link_to 'ログイン', new_user_session_path, class: "btn btn-outline-primary" %></li>
+          <li><%= link_to 'TOP', about_path, class: "text-decoration-none text-white" %></li>
+          <li><%= link_to '新規登録', new_user_registration_path, class: "text-decoration-none text-white" %></li>
+          <li><%= link_to 'ログイン', new_user_session_path, class: "text-decoration-none text-white" %></li>
         <% end %>
       </ul>
     </div>

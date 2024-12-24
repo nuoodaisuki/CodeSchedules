@@ -4,10 +4,18 @@
 
   <%= form_with model: @post, url: post_path(@post), method: :patch, local: true do |f| %>
 
-    <!-- かかった時間 (3桁用) -->
-    <div class="mb-3">
-      <%= f.label :time_taken, "かかった時間 (分)", class: "form-label d-block" %>
-      <%= f.text_field :time_taken, class: "form-control", style: "width: 100px;" %>
+    <div class="d-flex justify-content-start mb-3" style="gap: 20px; align-items: flex-end;">
+      <!-- かかった時間 -->
+      <div>
+        <%= f.label :time_taken, "かかった時間 (分)", class: "form-label d-block" %>
+        <%= f.text_field :time_taken, class: "form-control", style: "width: 100px;" %>
+      </div>
+
+      <!-- 実装完了日 -->
+      <div style="margin-left: 100px;">
+        <%= f.label :end, "機能実装完了日", class: "form-label d-block" %>
+        <%= f.date_field :end, required: true, class: "form-control" %>
+      </div>
     </div>
 
     <!-- 自由記述 -->
@@ -21,7 +29,6 @@
       <%= f.check_box :is_completion, { class: 'form-check-input', style: "transform: scale(1.5); margin-right: 10px;", required: true }, true, false %>
       <%= f.label :is_completion, 'タスク完了', class: 'form-check-label' %>
     </div>
-
 
     <!-- 更新ボタン -->
     <div class="mb-3">

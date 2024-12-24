@@ -13,7 +13,10 @@
   <body>
     <%= render 'layouts/header' %>
     <% flash.each do |key, message| %>
-      <div class="alert <%= key == "notice" ? "alert-success" : "alert-danger" %>">
+      <div 
+        class="alert <%= key == 'notice' ? 'alert-success' : 'alert-danger' %>" 
+        style="max-width: 80%; margin: 1rem auto; padding: 0.5rem 1rem; border-radius: 0.5rem; text-align: center;"
+      >
         <%= message %>
       </div>
     <% end %>

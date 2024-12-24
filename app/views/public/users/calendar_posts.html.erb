@@ -1,0 +1,10 @@
+<div class="row">
+
+  <%= render "public/shared/user_info", user: @user, link_to_user: false, editable: false, title: 'User info' %>
+
+  <!-- 投稿一覧 -->
+  <div class="col-md-9">
+    <h3 class="mt-3"><%= @date.strftime("%Y年%m月%d日") %> の投稿一覧</h3>
+    <%= render "public/shared/posts_index", posts: @posts, show_username: false, show_buttons: true, is_favorites_page: false %>
+  </div>
+</div>

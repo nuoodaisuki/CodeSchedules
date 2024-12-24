@@ -35,15 +35,7 @@
 }
 
 .green {
-  background-color: #00FF99;
-  color: #000;
-}
-
-/* ボタンコンテナを右下に固定 */
-.delete-btn-container {
-  position: absolute;
-  right: 130px; /* 右端からの余白 */
-  bottom: 20px; /* 下端からの余白 */
+  background-color: #00CC66 ;
 }
 
 /* 全体のスタイル */
@@ -122,4 +114,61 @@
 
 .edit-link:hover, .delete-link:hover {
   text-decoration: underline;
+}
+
+/* テーブル内の全てのthとtdを中央寄せ */
+.table th, 
+.table td {
+  text-align: center;        /* 水平方向に中央寄せ */
+  vertical-align: middle;    /* 垂直方向に中央寄せ */
+}
+
+/* ドロップダウンのスタイル */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  background-color: #007bff; /* ボタンの背景色 */
+  color: white;             /* ボタンの文字色 */
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.dropdown-toggle:hover {
+  background-color: #0056b3; /* ホバー時の色 */
+}
+
+.dropdown-menu {
+  display: none;            /* デフォルトは非表示 */
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  list-style-type: none;    /* リストマーカーを削除 */
+  padding: 10px 0;
+  margin: 0;
+  border-radius: 4px;
+  z-index: 1;
+  min-width: 150px;         /* ドロップダウンの最小幅 */
+}
+
+.dropdown-menu li {
+  padding: 5px 15px;
+}
+
+.dropdown-menu li a {
+  text-decoration: none;
+  color: black;
+}
+
+.dropdown-menu li a:hover {
+  color: #007bff; /* リンクのホバー時の色 */
+}
+
+/* ボタンがクリックされた時に表示 */
+.dropdown:hover .dropdown-menu {
+  display: block;
 }

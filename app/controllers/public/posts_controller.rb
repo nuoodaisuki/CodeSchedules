@@ -1,6 +1,5 @@
-class Public::PostsController < ApplicationController
+class Public::PostsController < Public::ApplicationController
 
-  before_action :authenticate_user!
   before_action :check_own_post, only: [:show]  # 自分の未了投稿のみ閲覧可能
 
   def index
@@ -22,15 +21,17 @@ class Public::PostsController < ApplicationController
       redirect_to posts_path, alert: "他のユーザーの未了投稿は閲覧できません。"
     end
     @comment = Comment.new
+    @comments = @post.comments
   end
 
   def new
     @post = Post.new
-    @tasks = Task.all
+    @task = Task.find_by(id: params[:task_id])
   end
 
   def create
     @post = current_user.posts.build(post_params)
+    @post.end = @post.start
     if @post.save
       redirect_to user_path(current_user), notice: "スケジュールを作成しました。"
     else
@@ -75,7 +76,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:task_id, :time_taken, :note, :is_completion)
+    params.require(:post).permit(:task_id, :time_taken, :start, :end, :note, :is_completion)
   end
 
   def check_own_post
