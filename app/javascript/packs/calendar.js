@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
       plugins: [dayGridPlugin],
       initialView: 'dayGridMonth',
       locale: 'ja',
-      events: 'calendar.json' // サーバーからイベントを取得するエンドポイント
+      events: 'calendar.json', // サーバーからイベントを取得するエンドポイント
+      displayEventTime: false
     });
 
     calendar.render();
