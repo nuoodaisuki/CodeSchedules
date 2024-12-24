@@ -50,6 +50,11 @@ class Public::GroupsController < Public::ApplicationController
     end
   end
 
+  def members
+    @group = Group.find(params[:id])
+    @members = @group.group_users.includes(:user).where(is_participation: true) # GroupUserを経由してユーザーを取得
+  end
+  
   private
 
     def group_params

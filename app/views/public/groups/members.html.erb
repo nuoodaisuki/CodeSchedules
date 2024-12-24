@@ -1,0 +1,24 @@
+<div style="max-width: 50%; margin: 0 auto;">
+  <h2 class="mt-3">メンバー一覧</h2>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>名前</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @members.each do |member| %>
+        <tr>
+          <td><%= member.user.name %></td>
+          <td>
+            <%= link_to "グループから除外する", group_group_users_path(group_id: @group.id, user_id: member.user.id), 
+                        method: :delete, 
+                        data: { confirm: "本当にこのメンバーを削除しますか？" }, 
+                        class: "btn btn-sm btn-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

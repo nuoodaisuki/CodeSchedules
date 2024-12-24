@@ -46,6 +46,7 @@ root to: "public/homes#about" # アプリ起動時に about ページを表示
       resource :group_users, only: [:create, :destroy]
       member do
         get :pending_users # 承認待ち画面
+        get :members
       end
       resources :group_users, only: [:update]
     end

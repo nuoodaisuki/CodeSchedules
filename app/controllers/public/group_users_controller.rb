@@ -25,7 +25,7 @@ class Public::GroupUsersController < Public::ApplicationController
     # オーナーによる拒否処理
     if group_user.group.owner_id == current_user.id
       group_user.destroy
-      redirect_to group_path(group_user.group), notice: "参加申請を拒否しました。"
+      redirect_to group_path(group_user.group), notice: "グループから除外しました。"
     elsif group_user.user_id == current_user.id
       # ユーザー自身が脱退する処理
       group_user.destroy
