@@ -23,9 +23,11 @@
         </table>
       </div>
 
-      <h4>選択した機能の説明文</h4>
-      <div class="p-3 border" style="width: 90%; border-width: 2px; border-radius: 5px; border-color: black; word-wrap: break-word; overflow-wrap: break-word; max-height: 200px; overflow-y: auto;">
-        <p class = "text-center"><%= @task.explanation %></p>
+      <div style="width: 90%; text-align: left;">
+        <h4>選択した機能の説明文</h4>
+        <div class="p-3 border" style="border-width: 2px; border-radius: 5px; border-color: black; word-wrap: break-word; overflow-wrap: break-word; max-height: 200px; overflow-y: auto;">
+          <p><%= simple_format(@task.explanation) %></p>
+        </div>
       </div>
 
 

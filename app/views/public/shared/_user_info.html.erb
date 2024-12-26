@@ -19,7 +19,7 @@
   <!-- 自己紹介の見出し -->
     <h5 class="mt-3">自己紹介</h5>
     <p>
-      <%= user.introduction %>
+      <%= simple_format(user.introduction) %>
     </p>
   <hr>
   <!-- 編集ボタン（現在のユーザーの場合のみ表示） -->

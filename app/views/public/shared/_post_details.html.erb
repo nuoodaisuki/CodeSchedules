@@ -24,9 +24,10 @@
     </tr>
   </table>
 
-  <div class="p-3 border mb-4" style="max-width: 95%; height: 350px; border-radius: 5px;">
-    <p><%= @post.note %></p>
+  <div class="p-3 border mb-4" style="max-width: 95%; height: 350px; border-radius: 5px; overflow-y: auto; word-wrap: break-word; overflow-wrap: break-word;">
+    <p><%= simple_format(@post.note) %></p>
   </div>
+
 
   <!-- コメント一覧 -->
   <h4 class="mt-3 mb-3">コメント一覧</h4>
