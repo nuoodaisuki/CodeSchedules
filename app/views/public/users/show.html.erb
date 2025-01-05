@@ -13,11 +13,7 @@
 
     <div class="d-flex justify-content-between align-items-center mt-3" style="max-width: 90%;">
       <h5>
-        <% if @user == current_user %>
-          <%= link_to "お気に入り記事一覧へ", favorite_posts_path(current_user) %>
-        <% else %>
-          <%= link_to "お気に入り記事一覧へ", favorite_posts_path(@user) %>
-        <% end %>
+        <%= link_to "お気に入り記事一覧へ", favorite_posts_path(@user) %>
       </h5>
       <%= render "public/shared/sort_form" %>
     </div>
