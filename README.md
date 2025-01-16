@@ -17,14 +17,21 @@
 * 機能の実装にどれくらいの時間がかかるか分からない時
 
 ## 設計書
-* 後ほど作成予定
+* UI Flows
+https://drive.google.com/file/d/1ZAQpobphtSk4U7fBh9dEuJG6VJ8KYj45/view?usp=sharing
+* ER図
+https://drive.google.com/file/d/1gQ2lEQXSoxskm4T05z5qWjnNkgxvbLwn/view?usp=sharing
+* テーブル定義書
+https://docs.google.com/spreadsheets/d/1OcuTK5_tx34VPBZzVl1w4wCA2y0rlqa-cXwmgUGw8ts/edit?usp=sharing
+* アプリケーション詳細設計
+https://docs.google.com/spreadsheets/d/1eTR6xHG3QRMlugu_XBusTZLOx7H6Qp_mBVOXHtIlEwc/edit?usp=sharing
 
 ## 開発環境
-- OS：Linux(CentOS)
+- OS：Amazon Linux release 2 (Karoo)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
-- IDE：Cloud9
+- IDE：Visual Studio Code
 ​
 ## 使用素材
 * Unsplash  
