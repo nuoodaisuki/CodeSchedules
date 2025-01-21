@@ -1,31 +1,47 @@
-<header class="bg-dark" style="height: 10vh; color: white;">
-  <nav class="h-100">
-    <div class="container h-100 d-flex align-items-center justify-content-end" style="padding-right: 1rem;">
-      <ul class="list-unstyled d-flex m-0" style="gap: 1.5rem;">
-        <% if admin_signed_in? %>
-          <!-- 管理者ログイン時のリンク -->
-          <li><%= link_to 'タスク一覧', admin_tasks_path, class: "text-decoration-none text-white" %></li>
-          <li><%= link_to '新規タスク作成', new_admin_task_path, class: "text-decoration-none text-white" %></li>
-          <li><%= link_to 'ユーザー一覧', admin_users_path, class: "text-decoration-none text-white" %></li>
-          <li><%= link_to 'グループ一覧', admin_groups_path, class: "text-decoration-none text-white" %></li>
-          <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "text-decoration-none text-white" %></li>
-        <% elsif user_signed_in? %>
-          <!-- ユーザーログイン時のリンク -->
-          <li><%= link_to 'TOP', about_path, class: "text-decoration-none text-white" %></li>
-          <li><%= link_to '投稿一覧', posts_path, class: "text-decoration-none text-white" %></li>
-          <li><%= link_to 'スケジュール作成', new_post_path, class: "text-decoration-none text-white" %></li>
-          <li><%= link_to 'マイページ', user_path(current_user), class: "text-decoration-none text-white" %></li>
-          <% if current_user.email != "guest@example.com" %>
-            <li><%= link_to 'グループ一覧', groups_path, class: "text-decoration-none text-white" %></li>
+<header class="bg-dark" style="color: white;">
+  <nav class="navbar navbar-expand-sm navbar-dark">
+    <div class="container">
+      <!-- アプリ名をリンクではなくテキストとして表示 -->
+      <span class="navbar-brand">CodeSchedule</span>
+
+      <!-- ハンバーガーメニューボタン -->
+      <button 
+        class="navbar-toggler" 
+        type="button" 
+        aria-controls="navbarNav" 
+        aria-expanded="false"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- メニュー -->
+      <div id="navbarNav" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <% if admin_signed_in? %>
+            <!-- 管理者ログイン時のリンク -->
+            <li class="nav-item"><%= link_to 'タスク一覧', admin_tasks_path, class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to '新規タスク作成', new_admin_task_path, class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to 'ユーザー一覧', admin_users_path, class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to 'グループ一覧', admin_groups_path, class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "nav-link" %></li>
+          <% elsif user_signed_in? %>
+            <!-- ユーザーログイン時のリンク -->
+            <li class="nav-item"><%= link_to 'TOP', about_path, class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to '投稿一覧', posts_path, class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to 'スケジュール作成', new_post_path, class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to 'マイページ', user_path(current_user), class: "nav-link" %></li>
+            <% if current_user.email != "guest@example.com" %>
+              <li class="nav-item"><%= link_to 'グループ一覧', groups_path, class: "nav-link" %></li>
+            <% end %>
+            <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link" %></li>
+          <% else %>
+            <!-- 未ログイン時のリンク -->
+            <li class="nav-item"><%= link_to 'TOP', about_path, class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to '新規登録', new_user_registration_path, class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to 'ログイン', new_user_session_path, class: "nav-link" %></li>
           <% end %>
-          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "text-decoration-none text-white" %></li>
-        <% else %>
-          <!-- 未ログイン時のリンク -->
-          <li><%= link_to 'TOP', about_path, class: "text-decoration-none text-white" %></li>
-          <li><%= link_to '新規登録', new_user_registration_path, class: "text-decoration-none text-white" %></li>
-          <li><%= link_to 'ログイン', new_user_session_path, class: "text-decoration-none text-white" %></li>
-        <% end %>
-      </ul>
+        </ul>
+      </div>
     </div>
   </nav>
 </header>

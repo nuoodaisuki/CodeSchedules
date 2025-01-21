@@ -172,3 +172,18 @@
 .dropdown:hover .dropdown-menu {
   display: block;
 }
+
+/* リンクの右寄せ */
+.navbar-nav {
+  margin-left: auto; /* デフォルトでは左寄せになっているので右に配置 */
+}
+
+/* ハンバーガーメニューでない場合のスタイル（768px以上） */
+@media (min-width: 768px) {
+  .navbar-collapse {
+    justify-content: flex-end; /* メニュー全体を右寄せ */
+  }
+  .navbar-brand {
+    margin-right: auto; /* アプリ名は左に配置 */
+  }
+}
