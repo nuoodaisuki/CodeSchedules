@@ -1,9 +1,9 @@
-<div class="col-9">
+<div class="col-md-9">
   <h3 class="mt-3">実装した機能のメモ書き</h3>
-  <table class="table" style="max-width: <%= table_width || "60%" %>;">
+  <table class="table table-responsive" style="max-width: <%= table_width || "60%" %>;">
     <tr>
-      <td>実装した機能</td>
-      <td>
+      <td nowrap>実装した機能</td>
+      <td nowrap>
         <%= @post.task.name %>
         <% if show_completion_status && @post.is_completion == false %>
           (実装中)
@@ -17,7 +17,7 @@
         <% end %>
       </td>
       <% if render_favorite_btn %>
-        <td id="favorite_btn_<%= @post.id %>">
+        <td nowrap id="favorite_btn_<%= @post.id %>">
           <%= render "public/shared/favorite_btn", post: @post %>
         </td>
       <% end %>

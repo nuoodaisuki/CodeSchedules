@@ -11,8 +11,8 @@
       <% @members.each do |member| %>
         <tr>
           <td><%= member.user.name %></td>
-          <td>
-            <%= link_to "グループから除外する", group_group_users_path(group_id: @group.id, user_id: member.user.id), 
+          <td nowrap>
+            <%= link_to "グループから除外", group_group_users_path(group_id: @group.id, user_id: member.user.id), 
                         method: :delete, 
                         data: { confirm: "本当にこのメンバーを削除しますか？" }, 
                         class: "btn btn-sm btn-danger" %>
