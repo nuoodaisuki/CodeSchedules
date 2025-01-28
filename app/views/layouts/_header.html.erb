@@ -26,6 +26,25 @@
             <li class="nav-item"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "nav-link" %></li>
           <% elsif user_signed_in? %>
             <!-- ユーザーログイン時のリンク -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Notification
+                <% unread_count = current_user.notifications.where(read: false).count %>
+                <% if unread_count > 0 %>
+                  <span class="badge bg-danger"><%= unread_count %></span>
+                <% end %>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="notificationDropdown">
+                <% if current_user.notifications.where(read: false).any? %>
+                  <li><span class="dropdown-item disabled">直近5件の未読通知</span></li>
+                  <% current_user.notifications.where(read: false).limit(5).order(created_at: :desc).each do |notification| %>
+                    <li><%= link_to notification_message(notification), notification_path(notification), method: :patch, class: "dropdown-item" %></li>
+                  <% end %>
+                <% else %>
+                  <li><span class="dropdown-item disabled">未読の通知はありません</span></li>
+                <% end %>
+              </ul>
+            </li>
             <li class="nav-item"><%= link_to 'TOP', about_path, class: "nav-link" %></li>
             <li class="nav-item"><%= link_to '投稿一覧', posts_path, class: "nav-link" %></li>
             <li class="nav-item"><%= link_to 'スケジュール作成', new_post_path, class: "nav-link" %></li>

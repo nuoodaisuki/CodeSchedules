@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :groups, through: :group_users
   has_many :favorites, dependent: :destroy
   has_many :favorited_posts, through: :favorites, source: :post
+  has_many :notifications, dependent: :destroy
 
   GUEST_USER_EMAIL = "guest@example.com"
 

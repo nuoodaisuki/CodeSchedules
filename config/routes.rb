@@ -50,6 +50,7 @@ root to: "public/homes#about" # アプリ起動時に about ページを表示
       end
       resources :group_users, only: [:update]
     end
+    resources :notifications, only: [:update]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
