@@ -37,7 +37,8 @@
         <p class="mb-1"><%= comment.content %></p>
         <div class="d-flex align-items-center justify-content-between">
           <small class="text-muted">
-            コメント投稿者：<%= link_to comment.user.name, user_path_callable.call(comment.user), class: "text-decoration-none" %>
+            コメント投稿者：<%= link_to comment.user.name, user_path_callable.call(comment.user), class: "text-decoration-none" %><br>
+            <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
           </small>
           <div>
             <% if comment.user == current_user || admin_signed_in? %>

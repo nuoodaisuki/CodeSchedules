@@ -21,7 +21,7 @@ class Public::PostsController < Public::ApplicationController
       redirect_to posts_path, alert: "他のユーザーの未了投稿は閲覧できません。"
     end
     @comment = Comment.new
-    @comments = @post.comments
+    @comments = @post.comments.order(created_at: :desc)
   end
 
   def new
