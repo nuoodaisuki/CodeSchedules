@@ -1,3 +1,14 @@
+<% if @user.errors.any? %>
+  <div class="text-center alert alert-danger mt-3">
+    <%= @user.errors.count %>件のエラーが発生しました
+    <ul style="list-style-position: inside; padding-left: 0;">
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class="container mt-5" style="max-width: 400px;">
   <h2 class="text-center mb-4">新規登録画面</h2>
 

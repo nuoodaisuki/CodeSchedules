@@ -12,7 +12,6 @@ class Public::CommentsController < Public::ApplicationController
     else
       @user = @post.user
       @comments = @post.comments
-      flash.now[:alert] = "コメントを入力してください。"
       render "public/posts/show" # showアクションのビューを再表示
     end
   end
@@ -31,7 +30,6 @@ class Public::CommentsController < Public::ApplicationController
     if @comment.update(comment_params)
       redirect_to post_path(@comment.post), notice: "コメントを更新しました。"
     else
-      flash.now[:alert] = "コメントを入力してください。"
       render :edit
     end
   end
