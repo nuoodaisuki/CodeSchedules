@@ -22,7 +22,6 @@ class Public::GroupsController < Public::ApplicationController
     if @group.save
       redirect_to group_path(@group), notice: "グループを作成しました。"
     else
-      flash.now[:alert] = "グループ名を入力して下さい。"
       render :new
     end
   end
@@ -36,7 +35,6 @@ class Public::GroupsController < Public::ApplicationController
     if @group.update(group_params)
       redirect_to group_path(@group), notice: "グループ情報を更新しました。"
     else
-      flash.now[:alert] = "グループ名を入力してください。"
       render :edit
     end
   end

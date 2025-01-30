@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   validates :name, presence: true
+  validates :email, presence: true, uniqueness: true
+  validates :password, presence: true, confirmation: true, length: { minimum: 6 }, allow_blank: true
 
   has_one_attached :image
   has_many :posts, dependent: :destroy

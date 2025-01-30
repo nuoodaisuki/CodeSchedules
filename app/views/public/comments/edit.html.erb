@@ -1,3 +1,9 @@
+<% if @comment.errors.any? %>
+  <div class="text-center alert alert-danger mt-3">
+    <%= @comment.errors.full_messages.first %>
+  </div>
+<% end %>
+
 <div class="container">
   <div class="row">
     <div class="col-5 mx-auto">

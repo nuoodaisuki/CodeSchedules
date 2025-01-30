@@ -31,9 +31,9 @@ class Public::SessionsController < Devise::SessionsController
     # 認証失敗時のカスタマイズ
     if resource.nil?
       if params[:user][:email].present? && params[:user][:password].present?
-        flash[:alert] = "wrong email or password"
+        flash[:alert] = "メールアドレスまたはパスワードが間違っています。"
       else
-        flash[:alert] = "Invalid Email or password"
+        flash[:alert] = "メールアドレスまたはパスワードが入力されていません。"
       end
       redirect_to new_user_session_path and return
     end
@@ -44,7 +44,7 @@ class Public::SessionsController < Devise::SessionsController
   def guest_sign_in
     user = User.guest
     sign_in user
-    redirect_to user_path(current_user), notice: "Guest-Signed in successfully."
+    redirect_to user_path(current_user), notice: "ゲストユーザーでログインしました。"
   end
 
   protected

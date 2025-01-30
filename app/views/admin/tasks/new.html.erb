@@ -1,3 +1,14 @@
+<% if @task.errors.any? %>
+  <div class="text-center alert alert-danger mt-3">
+    <%= @task.errors.count %>件のエラーが発生しました
+    <ul style="list-style-position: inside; padding-left: 0;">
+      <% @task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class="container mt-5" style="max-width: 600px;">
   <h1 class="text-center mb-4">新規タスク作成</h1>
 

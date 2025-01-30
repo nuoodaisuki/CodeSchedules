@@ -21,7 +21,7 @@ class Public::PostsController < Public::ApplicationController
       redirect_to posts_path, alert: "他のユーザーの未了投稿は閲覧できません。"
     end
     @comment = Comment.new
-    @comments = @post.comments
+    @comments = @post.comments.order(created_at: :desc)
   end
 
   def new
@@ -32,13 +32,8 @@ class Public::PostsController < Public::ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     @post.end = @post.start
-    if @post.save
-      redirect_to user_path(current_user), notice: "スケジュールを作成しました。"
-    else
-      flash.now[:alert] = "スケジュール作成に失敗しました。タスクを選んで下さい。"
-      @tasks = Task.all
-      render :new
-    end
+    @post.save
+    redirect_to user_path(current_user), notice: "スケジュールを作成しました。"
   end
 
   def edit
@@ -54,8 +49,7 @@ class Public::PostsController < Public::ApplicationController
       if @post.update(post_params)
         redirect_to user_path(current_user), notice: 'タスクが完了しました。'
       else
-        flash.now[:alert] = "かかった時間を入力して下さい。"
-        render :edit, status: :unprocessable_entity
+        render :edit
       end
     else
       redirect_to edit_post_path(@post)

@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :explanation, presence: true
 
   has_many :posts

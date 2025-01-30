@@ -1,0 +1,62 @@
+ja:
+  time:
+    formats:
+      short: "%Y/%m/%d %H:%M"
+      
+  devise:
+    sessions:
+      signed_in: ログインしました。
+      signed_out: ログアウトしました。
+    registrations:
+      signed_up: アカウント登録が完了しました。
+
+  activerecord:
+    attributes:
+      post:
+        time_taken: かかった時間 (分)
+      comment:
+        content: コメント
+      group:
+        name: グループ名
+      user:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
+        name: 名前
+      task:
+        name: 名前
+        explanation: 説明文
+
+    errors:
+      models:
+        post:
+          attributes:
+            time_taken:
+              blank: は必須項目です。
+        comment:
+          attributes:
+            content:
+              blank: を入力してください。
+        group:
+          attributes:
+            name:
+              blank: を入力してください。
+        user:
+          attributes:
+            email:
+              blank: を入力してください。
+              taken: は既に登録されています。
+            password:
+              blank: を入力してください。
+              too_short: は6文字以上で入力してください。
+            password_confirmation:
+              confirmation: が一致しません。
+            name:
+              blank: を入力してください。
+        task:
+          attributes:
+            name:
+              blank: を入力してください。
+              taken: は既に登録されています。
+            explanation:
+              blank: を入力してください。

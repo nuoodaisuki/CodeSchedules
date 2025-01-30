@@ -60,21 +60,6 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-  def create
-    build_resource(sign_up_params)
-
-    if resource.save
-      flash[:notice] = "Welcome! You have signed up successfully." # 登録成功時は既存の挙動を利用
-      sign_up(resource_name, resource)
-      respond_with resource, location: after_sign_up_path_for(resource)
-    else
-      flash[:alert] = "Required information is missing." # 必要な情報が入力されていない場合のエラーメッセージ
-      clean_up_passwords(resource)
-      set_minimum_password_length
-      redirect_to new_user_registration_path
-    end
-  end
-
   before_action :configure_sign_up_params, only: [:create]
   
   protected
