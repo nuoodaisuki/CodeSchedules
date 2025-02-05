@@ -1,6 +1,5 @@
 class Public::GroupMessagesController < Public::ApplicationController
 
-  before_action :ensure_guest_user
   before_action :set_group, only: [:index, :create, :destroy]
   
   # メッセージ一覧表示
@@ -32,13 +31,6 @@ class Public::GroupMessagesController < Public::ApplicationController
 
   def group_message_params
     params.require(:group_message).permit(:content)
-  end
-
-  def ensure_guest_user
-    @user = current_user
-    if @user.email == "guest@example.com"
-      redirect_to user_path(current_user) , alert: "ゲストユーザーはメッセージ機能を使えません。"
-    end
   end
 
 end

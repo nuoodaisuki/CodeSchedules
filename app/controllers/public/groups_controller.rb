@@ -1,6 +1,5 @@
 class Public::GroupsController < Public::ApplicationController
 
-  before_action :ensure_guest_user
   before_action :ensure_correct_user, only: [:edit, :update]
   before_action :set_group, only: [:show, :edit, :update, :pending_users, :members]
 
@@ -57,13 +56,6 @@ class Public::GroupsController < Public::ApplicationController
 
   def group_params
     params.require(:group).permit(:name, :explanation, :group_image)
-  end
-
-  def ensure_guest_user
-    @user = current_user
-    if @user.email == "guest@example.com"
-      redirect_to user_path(current_user) , alert: "ゲストユーザーはグループ機能を使えません。"
-    end
   end
 
   def ensure_correct_user

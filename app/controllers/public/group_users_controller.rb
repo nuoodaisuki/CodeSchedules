@@ -1,7 +1,5 @@
 class Public::GroupUsersController < Public::ApplicationController
 
-  before_action :ensure_guest_user
-
   def create
     group_user = current_user.group_users.new(group_id: params[:group_id])
     group_user.save
@@ -49,13 +47,4 @@ class Public::GroupUsersController < Public::ApplicationController
     end
   end
   
-
-  private
-
-  def ensure_guest_user
-    @user = current_user
-    if @user.email == "guest@example.com"
-      redirect_to user_path(current_user) , alert: "ゲストユーザーはグループ機能を使えません。"
-    end
-  end
 end
