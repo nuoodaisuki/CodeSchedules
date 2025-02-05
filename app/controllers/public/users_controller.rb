@@ -1,9 +1,9 @@
 class Public::UsersController < Public::ApplicationController
   
   before_action :ensure_correct_user, only: [:edit]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :favorites]
 
   def show
-    @user = User.find(params[:id])
     if @user == current_user
       # 自分自身の場合：すべての投稿を取得
       @posts = @user.posts
@@ -22,14 +22,10 @@ class Public::UsersController < Public::ApplicationController
   end
 
   def edit
-    ensure_correct_user
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = current_user
     if @user.update(user_params)
-      bypass_sign_in(@user)
       redirect_to user_path(@user), notice: "ユーザー情報を更新しました"
     else
       render :edit
@@ -37,7 +33,6 @@ class Public::UsersController < Public::ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
     if @user.destroy
       reset_session
       flash[:notice] = "退会処理が完了しました。"
@@ -48,7 +43,6 @@ class Public::UsersController < Public::ApplicationController
   end
 
   def favorites
-    @user = User.find(params[:id])
     @favorite_posts = @user.favorited_posts.includes(:user).order(created_at: :desc) # 投稿の詳細を取得
   end
 
@@ -59,6 +53,10 @@ class Public::UsersController < Public::ApplicationController
   end
 
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(:name, :email, :image, :introduction).tap do |user_params|

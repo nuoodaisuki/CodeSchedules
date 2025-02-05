@@ -1,5 +1,6 @@
 class Public::CommentsController < Public::ApplicationController
 
+  before_action :set_comment, only: [:edit, :update]
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :ensure_guest_user
 
@@ -22,11 +23,9 @@ class Public::CommentsController < Public::ApplicationController
   end
 
   def edit
-    @comment = Comment.find(params[:id])
   end
 
   def update
-    @comment = Comment.find(params[:id])
     if @comment.update(comment_params)
       redirect_to post_path(@comment.post), notice: "コメントを更新しました。"
     else
@@ -35,6 +34,10 @@ class Public::CommentsController < Public::ApplicationController
   end
 
   private
+
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
 
   def comment_params
     params.require(:comment).permit(:content)
