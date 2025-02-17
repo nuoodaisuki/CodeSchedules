@@ -1,6 +1,7 @@
 class Public::PostsController < Public::ApplicationController
 
   before_action :check_own_post, only: [:show]  # 自分の未了投稿のみ閲覧可能
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
     @posts = Post.where(is_completion: true).includes(:task)
@@ -16,7 +17,6 @@ class Public::PostsController < Public::ApplicationController
   
 
   def show
-    @post = Post.find(params[:id])
     if @post.is_completion == false && @post.user != current_user
       redirect_to posts_path, alert: "他のユーザーの未了投稿は閲覧できません。"
     end
@@ -37,14 +37,12 @@ class Public::PostsController < Public::ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
     unless @post.user_id == current_user.id
       redirect_to user_path(current_user), alert: '他の人の投稿編集を行う事は出来ません。'
     end
   end
 
   def update
-    @post = Post.find(params[:id])
     if @post.user_id == current_user.id && post_params[:is_completion] == "true"
       if @post.update(post_params)
         redirect_to user_path(current_user), notice: 'タスクが完了しました。'
@@ -57,7 +55,6 @@ class Public::PostsController < Public::ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
   # 自分の投稿かどうか確認
     if @post.user_id == current_user.id
       @post.destroy
@@ -68,6 +65,10 @@ class Public::PostsController < Public::ApplicationController
   end
   
   private
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
   def post_params
     params.require(:post).permit(:task_id, :time_taken, :start, :end, :note, :is_completion)

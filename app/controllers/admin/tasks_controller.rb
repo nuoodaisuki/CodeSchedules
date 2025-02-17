@@ -1,6 +1,8 @@
 # app/controllers/admin/tasks_controller.rb
 class Admin::TasksController < Admin::ApplicationController
 
+  before_action :set_task, only: [:show, :edit, :update]
+
   # Task一覧画面
   def index
     @tasks = Task.all
@@ -23,17 +25,14 @@ class Admin::TasksController < Admin::ApplicationController
 
   # Task詳細画面
   def show
-    @task = Task.find(params[:id])
   end
 
   # Task編集画面
   def edit
-    @task = Task.find(params[:id])
   end
 
   # Task更新処理
   def update
-    @task = Task.find(params[:id])
     if @task.update(task_params)
       redirect_to admin_task_path(@task), notice: 'タスクを更新しました。'
     else
@@ -42,6 +41,10 @@ class Admin::TasksController < Admin::ApplicationController
   end
 
   private
+
+  def set_task
+    @task = Task.find(params[:id])
+  end
 
   # 許可されたパラメータを指定
   def task_params
